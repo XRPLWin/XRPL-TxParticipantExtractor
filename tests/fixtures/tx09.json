@@ -1,0 +1,53 @@
+{
+    "id": "example_NFTokenCancelOffer",
+    "result": {
+      "Account": "rnkmrTjpPTnVHkWCkVHLLVpspLKhyBCPm5",
+      "Fee": "15",
+      "LastLedgerSequence": 75917883,
+      "NFTokenOffers": [
+        "BEC4E1FFC2A4889ED4CC8C1823FDD13D73E2731A54152C3967D2EC6ADD70AD90"
+      ],
+      "Sequence": 66705942,
+      "SigningPubKey": "0290B22CDF6789116A0518D8AE632867857DE5B0BDA6CCD5F57D70DCF03B2C72E4",
+      "TransactionType": "NFTokenCancelOffer",
+      "TxnSignature": "304402202B1033E034E09EAB58777137BA28FBA25104E496A6F09ACECC3C35FCE411437002204DBC6B4735EC992DA28DCC25C883FDE34DD2EA2E0BFBDACFE6CA1022CA391C6A",
+      "date": 722397240,
+      "hash": "9FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5",
+      "inLedger": 75917875,
+      "ledger_index": 75917875,
+      "meta": {
+        "AffectedNodes": [
+          {
+            "ModifiedNode": {
+              "FinalFields": {
+                "Account": "rnkmrTjpPTnVHkWCkVHLLVpspLKhyBCPm5",
+                "Balance": "1581713217",
+                "Flags": 0,
+                "OwnerCount": 13,
+                "Sequence": 66705943
+              },
+              "LedgerEntryType": "AccountRoot",
+              "LedgerIndex": "DE384AA89FC117C1548EF868B269B9902684EDC2357BA3872A40C3D87AEAE0FB",
+              "PreviousFields": {
+                "Balance": "1581713232",
+                "Sequence": 66705942
+              },
+              "PreviousTxnID": "6FCED415D6C82D4C25ED8B3C95C76EF713D34E8844757EC32A40E7C5EA6B0B16",
+              "PreviousTxnLgrSeq": 75917272
+            }
+          }
+        ],
+        "TransactionIndex": 33,
+        "TransactionResult": "tesSUCCESS"
+      },
+      "validated": true,
+      "warnings": [
+        {
+          "id": 1004,
+          "message": "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+        }
+      ]
+    },
+    "status": "success",
+    "type": "response"
+  }

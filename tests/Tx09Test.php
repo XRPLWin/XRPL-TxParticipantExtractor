@@ -6,13 +6,13 @@ use PHPUnit\Framework\TestCase;
 use XRPLWin\XRPLTxParticipantExtractor\TxParticipantExtractor;
 
 /***
- * NFTokenCreateOffer
+ * NFTokenCancelOffer
  */
-final class Tx08Test extends TestCase
+final class Tx09Test extends TestCase
 {
-    public function testNFTokenCreateOffer()
+    public function testNFTokenCancelOffer()
     {
-        $transaction = file_get_contents(__DIR__.'/fixtures/tx08.json');
+        $transaction = file_get_contents(__DIR__.'/fixtures/tx09.json');
         $transaction = \json_decode($transaction);
         $TxParticipantExtractor = new TxParticipantExtractor($transaction->result);
         $parsedTransaction = $TxParticipantExtractor->result();
@@ -20,8 +20,7 @@ final class Tx08Test extends TestCase
         $this->assertIsArray($parsedTransaction);
 
         $this->assertEquals([
-            'rPmjAYZJ6WgxoVcpnteZWYUSXfh8RaGnD2',
-            'raAMrBFaAqf7cv8U7gZssZptfaKGvZjiga',
+            'rnkmrTjpPTnVHkWCkVHLLVpspLKhyBCPm5',
         ], $parsedTransaction);
         
     }

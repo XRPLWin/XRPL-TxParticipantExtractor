@@ -122,7 +122,28 @@ class TxParticipantExtractor
     
   }
 
-  
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_NFTokenOffer(\stdClass $data)
+  {
+    # Issuer of token from Amount
+    if(isset($data->Currency->issuer)) {
+      $this->addAccount($data->Owner, 'NFTOKENOFFER_AMOUNTISSUER');
+    }
+
+    # Destination
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'NFTOKENOFFER_DESTINATION');
+    }
+
+    # Owner
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'NFTOKENOFFER_OWNER');
+    }
+  }
+
   /**
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
