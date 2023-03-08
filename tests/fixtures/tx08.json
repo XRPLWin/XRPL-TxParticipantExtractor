@@ -1,0 +1,100 @@
+{
+  "id": "example_NFTokenCreateOffer",
+  "result": {
+    "Account": "rPmjAYZJ6WgxoVcpnteZWYUSXfh8RaGnD2",
+    "Amount": "0",
+    "Destination": "raAMrBFaAqf7cv8U7gZssZptfaKGvZjiga",
+    "Fee": "20",
+    "Flags": 1,
+    "LastLedgerSequence": 75453080,
+    "NFTokenID": "00082710F9C8EA172039A645AE3E96C10D20A3EF938D92F9B52AF54A00003BB0",
+    "Sequence": 75479954,
+    "SigningPubKey": "02FFD97B12CD4BFACF5D133390A7C017AEEE542043E0185FB483BFAE1461B44967",
+    "TransactionType": "NFTokenCreateOffer",
+    "TxnSignature": "3045022100972FD5EEE15633BF50BF1A5426EA635F7AFD8B045B8D0C591E1C8C3A38BD2DA3022012656B1977F4F54D284398B4485A1A11DDCB4D33AA92CABE34B3D42F27C4A13A",
+    "date": 720601951,
+    "hash": "780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6",
+    "inLedger": 75453060,
+    "ledger_index": 75453060,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "260577FB5A828D0410270796CC8DDA263DB1766360F8F3E180351F8A629868C8",
+            "PreviousTxnID": "74F0D2B0702483D628083D120171F5146CB0088D70037CC7C5194185418E394C",
+            "PreviousTxnLgrSeq": 75453059
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "IndexPrevious": "2",
+              "Owner": "rPmjAYZJ6WgxoVcpnteZWYUSXfh8RaGnD2",
+              "RootIndex": "F472D791602758961B3561B598ADF436A580F7C195CB6527DF8459D28FE52FAC"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "31B5B191A9F6A8754BC91FB24EE9FECD4ED142B178B9DFE2D6F1259AFC47B609"
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "4DA6F68F5DC9F0F818F5B4D50D18A8C8E835AB780CFB11C474ADC50D82A40536",
+            "NewFields": {
+              "Flags": 2,
+              "NFTokenID": "00082710F9C8EA172039A645AE3E96C10D20A3EF938D92F9B52AF54A00003BB0",
+              "RootIndex": "4DA6F68F5DC9F0F818F5B4D50D18A8C8E835AB780CFB11C474ADC50D82A40536"
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rPmjAYZJ6WgxoVcpnteZWYUSXfh8RaGnD2",
+              "Balance": "1704560979",
+              "Flags": 0,
+              "MintedNFTokens": 15301,
+              "OwnerCount": 188,
+              "Sequence": 75479955
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "AE2C6C3F1ED86055B0986D6F3E736354D34A631B0D359B0F5D1DF90B7125C9FD",
+            "PreviousFields": {
+              "Balance": "1704560999",
+              "OwnerCount": 187,
+              "Sequence": 75479954
+            },
+            "PreviousTxnID": "74F0D2B0702483D628083D120171F5146CB0088D70037CC7C5194185418E394C",
+            "PreviousTxnLgrSeq": 75453059
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "NFTokenOffer",
+            "LedgerIndex": "DEB556E830765A06D8CEAAA408CBD359ECC9A82FB6D1DECCC26509438DCFAE3D",
+            "NewFields": {
+              "Destination": "raAMrBFaAqf7cv8U7gZssZptfaKGvZjiga",
+              "Flags": 1,
+              "NFTokenID": "00082710F9C8EA172039A645AE3E96C10D20A3EF938D92F9B52AF54A00003BB0",
+              "Owner": "rPmjAYZJ6WgxoVcpnteZWYUSXfh8RaGnD2",
+              "OwnerNode": "3"
+            }
+          }
+        }
+      ],
+      "TransactionIndex": 3,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true,
+    "warnings": [
+      {
+        "id": 1004,
+        "message": "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+      }
+    ]
+  },
+  "status": "success",
+  "type": "response"
+}

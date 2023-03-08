@@ -1,0 +1,113 @@
+{
+  "id": 1,
+  "result": {
+    "Account": "rhpe8vRiZ8NvVn6MnFTwL2TxzMeCUhSeVQ",
+    "Fee": "12",
+    "Flags": 0,
+    "LastLedgerSequence": 75444452,
+    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B3616E5DA9D00000001",
+    "Sequence": 75443360,
+    "SigningPubKey": "ED47A385DD6EE186C49BFCB4B647AF27B0C9B8F2E2C59678F40EE98472BBECB652",
+    "TransactionType": "NFTokenBurn",
+    "TxnSignature": "9C67F7440C3021551109D288959CCE937ACD1EBD7FD040FB8057B52B1745A5B21C068FCDA08CF907BB6EE16590D9B09B27C9F982D2EDFF4DB5E509EBB59F190E",
+    "date": 720568411,
+    "hash": "7B9EFDFDC801C58F2B61B89AA2751634F49CE2A93923671FF0F4F099C7EE17FF",
+    "inLedger": 75444434,
+    "ledger_index": 75444434,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "NFTokens": [
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B360000099A00000000",
+                    "URI": "68747470733A2F2F677265677765697362726F642E636F6D"
+                  }
+                },
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B362DCBAB9C00000002",
+                    "URI": "68747470733A2F2F6E696B2E626F7567616C69732E6E6574"
+                  }
+                },
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B3644B17C9F00000003",
+                    "URI": "68747470733A2F2F677265677765697362726F642E636F6D"
+                  }
+                }
+              ]
+            },
+            "LedgerEntryType": "NFTokenPage",
+            "LedgerIndex": "2138571C1D5416A14CD66740650DF2C319918B36FFFFFFFFFFFFFFFFFFFFFFFF",
+            "PreviousFields": {
+              "NFTokens": [
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B360000099A00000000",
+                    "URI": "68747470733A2F2F677265677765697362726F642E636F6D"
+                  }
+                },
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B3616E5DA9D00000001",
+                    "URI": "68747470733A2F2F677265677765697362726F642E636F6D"
+                  }
+                },
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B362DCBAB9C00000002",
+                    "URI": "68747470733A2F2F6E696B2E626F7567616C69732E6E6574"
+                  }
+                },
+                {
+                  "NFToken": {
+                    "NFTokenID": "000800002138571C1D5416A14CD66740650DF2C319918B3644B17C9F00000003",
+                    "URI": "68747470733A2F2F677265677765697362726F642E636F6D"
+                  }
+                }
+              ]
+            },
+            "PreviousTxnID": "9031FC0D5A70C7CA3F9A3E270D39741CDB9E363F12AEF2CCD2C86159ECFDC845",
+            "PreviousTxnLgrSeq": 75443461
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rhpe8vRiZ8NvVn6MnFTwL2TxzMeCUhSeVQ",
+              "Balance": "19638664",
+              "BurnedNFTokens": 1,
+              "Flags": 0,
+              "MintedNFTokens": 4,
+              "OwnerCount": 1,
+              "Sequence": 75443361
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "55B307EA1A984FBED5EF9A886A1E76FD4DB8BD9CD320A4F1783E2E92A149D76E",
+            "PreviousFields": {
+              "Balance": "19638676",
+              "Sequence": 75443360
+            },
+            "PreviousTxnID": "9031FC0D5A70C7CA3F9A3E270D39741CDB9E363F12AEF2CCD2C86159ECFDC845",
+            "PreviousTxnLgrSeq": 75443461
+          }
+        }
+      ],
+      "TransactionIndex": 30,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true,
+    "warnings": [
+      {
+        "id": 1004,
+        "message": "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+      }
+    ]
+  },
+  "status": "success",
+  "type": "response"
+}

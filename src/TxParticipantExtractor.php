@@ -66,8 +66,11 @@ class TxParticipantExtractor
     //Extract all other participants from meta
     $this->extractAccountsFromMeta();
 
+    $this->removeSpecialAccounts();
+
     $this->result = \array_keys($this->accounts);
-    dd($this->accounts);
+    //dd($this->accounts);
+    //foreach($this->result as $r) {echo "'".$r."',".PHP_EOL;}exit;
   }
 
   /**
@@ -79,6 +82,7 @@ class TxParticipantExtractor
   {
     if(!isset($this->tx->meta->AffectedNodes))
       return;
+    
     foreach($this->tx->meta->AffectedNodes as $n)
     {
       //dd($n);
@@ -118,8 +122,18 @@ class TxParticipantExtractor
     
   }
 
+  
   /**
-   * @see https://xrpl.org/ripplestate.html
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_NFTokenPage(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
    * @todo TakerGetsIssuer TakerPaysIssuer - check this
    * @return void
    */
@@ -132,7 +146,7 @@ class TxParticipantExtractor
   }
 
   /**
-   * @see https://xrpl.org/ripplestate.html
+   * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
   private function extract_Offer(\stdClass $data)
@@ -154,7 +168,7 @@ class TxParticipantExtractor
   }
 
   /**
-   * @see https://xrpl.org/ripplestate.html
+   * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
   private function extract_AccountRoot(\stdClass $data)
@@ -176,7 +190,7 @@ class TxParticipantExtractor
   }
 
   /**
-   * @see https://xrpl.org/ripplestate.html
+   * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
   private function extract_RippleState(\stdClass $data)
@@ -212,6 +226,15 @@ class TxParticipantExtractor
     }
   }
 
+  private function removeSpecialAccounts()
+  {
+    unset($this->accounts[self::ACCOUNT_ZERO]);
+    unset($this->accounts[self::ACCOUNT_ONE]);
+    unset($this->accounts[self::ACCOUNT_GENESIS]);
+    unset($this->accounts[self::ACCOUNT_BLACKHOLE]);
+    unset($this->accounts[self::ACCOUNT_NAN]);
+  }
+
   /**
    * Returns final result.
    * @return array
@@ -219,5 +242,10 @@ class TxParticipantExtractor
   public function result(): array
   {
     return $this->result;
+  }
+
+  public function accounts(): array
+  {
+    return $this->accounts;
   }
 }

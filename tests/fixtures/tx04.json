@@ -1,0 +1,96 @@
+{
+  "id": 1,
+  "result": {
+    "Account": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+    "Fee": "1000",
+    "Flags": 8,
+    "Issuer": "rKgR5LMCU1opzENpP7Qz7bRsQB4MKPpJb4",
+    "Memos": [
+      {
+        "Memo": {
+          "MemoData": "5275646520426F79204E4654204D696E74206279207872702E63616665"
+        }
+      }
+    ],
+    "NFTokenTaxon": 1,
+    "Sequence": 77802961,
+    "SigningPubKey": "025B9FB842E40AD38572963EA88A05DDEC62C6F68A8FE44CDFF30CFC8C30324D50",
+    "TransactionType": "NFTokenMint",
+    "TransferFee": 6000,
+    "TxnSignature": "304402206908D4E0E127B3B96D985DBC25A3EFDE564F2FD0274F15972CA3ABCF3630C80A022057E307455DF04A1310154DCEB5F15C53377B1BF23961604DDF41CBA829C6EB4E",
+    "URI": "68747470733A2F2F617277656176652E6E65742F5247682D6B6F45346B6B724D4C4944734F38507A6B4166594257555235703242417754784355504D4B6F592F312E6A736F6E",
+    "date": 729731730,
+    "hash": "97F547EEDD12D5FC8F555B359FB7098A26D09C9E4E8B7FD9CEC1560ABEBF4341",
+    "inLedger": 77803418,
+    "ledger_index": 77803418,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rKgR5LMCU1opzENpP7Qz7bRsQB4MKPpJb4",
+              "Balance": "19999985",
+              "Flags": 0,
+              "MintedNFTokens": 1,
+              "NFTokenMinter": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+              "OwnerCount": 0,
+              "Sequence": 77178085
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "4436FA6FE7EF9077822F6B692075EFC6B133CABC85AA18CE5062068AFC0D62E8",
+            "PreviousFields": {},
+            "PreviousTxnID": "0AFB6BF2B465716746BA6C4D1CECD7E6B74647A1E9919F7E9F582AC393DC20F8",
+            "PreviousTxnLgrSeq": 77803233
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "NFTokenPage",
+            "LedgerIndex": "4C53D1E11EE197DA72BDEF9F96F06B194C1AEFEBFFFFFFFFFFFFFFFFFFFFFFFF",
+            "NewFields": {
+              "NFTokens": [
+                {
+                  "NFToken": {
+                    "NFTokenID": "00081770CCE71D9E7BD07E3A771C7619DA982D62CD37325A0000099A00000000",
+                    "URI": "68747470733A2F2F617277656176652E6E65742F5247682D6B6F45346B6B724D4C4944734F38507A6B4166594257555235703242417754784355504D4B6F592F312E6A736F6E"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+              "Balance": "2999999000",
+              "Flags": 0,
+              "OwnerCount": 1,
+              "Sequence": 77802962
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "7D781ED4AC814E006C1D5C72FB15AD54E28BCED78AAF5B0F20052046E2773452",
+            "PreviousFields": {
+              "Balance": "3000000000",
+              "OwnerCount": 0,
+              "Sequence": 77802961
+            },
+            "PreviousTxnID": "D4BD7DAB8CE8D746908434FC3AF3C0D3F2CD06780250F823B4C72C802A396C10",
+            "PreviousTxnLgrSeq": 77802961
+          }
+        }
+      ],
+      "TransactionIndex": 3,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true,
+    "warnings": [
+      {
+        "id": 1004,
+        "message": "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+      }
+    ]
+  },
+  "status": "success",
+  "type": "response"
+}
