@@ -99,7 +99,6 @@ class TxParticipantExtractor
     
     foreach($this->tx->meta->AffectedNodes as $n)
     {
-      //dd($n);
       if(isset($n->CreatedNode))
       {
         if(isset($n->CreatedNode->NewFields))
@@ -440,6 +439,10 @@ class TxParticipantExtractor
     return $this->result;
   }
 
+  /**
+   * Returns list of accounts with information where in tx account was disovered.
+   * @return array
+   */
   public function accounts(): array
   {
     return $this->accounts;
