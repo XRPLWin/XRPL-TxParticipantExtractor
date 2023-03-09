@@ -1,0 +1,103 @@
+{
+  "id": "example_TrustSet",
+  "result": {
+    "Account": "r9qheokwreSsfdFqvYzYerrTa6xGpD8N5r",
+    "Fee": "20",
+    "Flags": 262144,
+    "LimitAmount": {
+      "currency": "USD",
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "value": "10000"
+    },
+    "Sequence": 68013008,
+    "SigningPubKey": "029371A582A3F9D54B128B41E37CD325370512E0FB5215BD52A00E011B53749E2B",
+    "TransactionType": "TrustSet",
+    "TxnSignature": "3044022006AB30FE425FD68528A5FFA7D1E027C14EEF2781106D9D03FA1E6839CD4AD39202200ECFDFDB86942437887D35D98AF9472C2FB40EA64886FF67724FB66A02EC29D8",
+    "date": 695445991,
+    "hash": "8566673ECD0A9731C516906E5D2F47129C5C13713602140733831A56CEAE1A05",
+    "inLedger": 68999137,
+    "ledger_index": 68999137,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+            "PreviousTxnID": "AC7EAAE8B0CB22FA837C5EFD74201E8294D1FF3925471093C53768395F122692",
+            "PreviousTxnLgrSeq": 68558626
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "r9qheokwreSsfdFqvYzYerrTa6xGpD8N5r",
+              "Balance": "25223095",
+              "Flags": 0,
+              "OwnerCount": 1,
+              "Sequence": 68013009
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "24FC0F31D3D60D19431D27044E0B2F72DC57B611476D607B9D262F4CAFC2FEDE",
+            "PreviousFields": {
+              "Balance": "25223115",
+              "OwnerCount": 0,
+              "Sequence": 68013008
+            },
+            "PreviousTxnID": "9972671EF0FA6F2A6F9A0AF63E4CB6F1ABB345272856CB0745657A858E11F45B",
+            "PreviousTxnLgrSeq": 68998144
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "RootIndex": "3B9C0CE77FCE7BCEE1A68F1E26AC467AF326239D0D816CE705E4A0E2DAD03F6D"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "3B9C0CE77FCE7BCEE1A68F1E26AC467AF326239D0D816CE705E4A0E2DAD03F6D"
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "71CA0E9216D802A008583FD945623A4861EF6414B7C7C5447DD4D9309198A7D0",
+            "NewFields": {
+              "Owner": "r9qheokwreSsfdFqvYzYerrTa6xGpD8N5r",
+              "RootIndex": "71CA0E9216D802A008583FD945623A4861EF6414B7C7C5447DD4D9309198A7D0"
+            }
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "RippleState",
+            "LedgerIndex": "965488EF00AE88F938930FC88774B13F99FFFA00883004AD18AF4F0EE1C7B26F",
+            "NewFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "0"
+              },
+              "Flags": 131072,
+              "HighLimit": {
+                "currency": "USD",
+                "issuer": "r9qheokwreSsfdFqvYzYerrTa6xGpD8N5r",
+                "value": "10000"
+              },
+              "LowLimit": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "0"
+              }
+            }
+          }
+        }
+      ],
+      "TransactionIndex": 69,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true
+  },
+  "status": "success",
+  "type": "response"
+}

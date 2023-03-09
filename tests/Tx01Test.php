@@ -21,8 +21,8 @@ final class Tx01Test extends TestCase
 
         $this->assertEquals([
             "rJWSJ8b2DxpvbhJjTA3ZRiEK2xsxZNHaLP",
-            "rETx8GBiH6fxhTcfHM9fGeyShqxozyD3xe",
             "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+            "rETx8GBiH6fxhTcfHM9fGeyShqxozyD3xe",
             "rJU5puBVXYYtxEVj2yQrTb2ySwA8wcqcev",
             "rEcBRYhzi2uRrwACVpTjDPTY853bYnwtKf",
             "ra5J6KL9fbt6EeNt6c1eea3J7BsQJBPApi",

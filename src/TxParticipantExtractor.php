@@ -2,6 +2,8 @@
 
 namespace XRPLWin\XRPLTxParticipantExtractor;
 
+use XRPL_PHP\Core\RippleBinaryCodec\Types\AccountId;
+
 /**
  * Transaction Participant Extractor
  */
@@ -21,7 +23,7 @@ class TxParticipantExtractor
   private array $result = [];
   private array $accounts = [];
 
-  
+
 
   public function __construct(\stdClass $tx)
   {
@@ -46,30 +48,42 @@ class TxParticipantExtractor
     //Add Owner (if exists) - eg. https://xrpl.org/escrowcancel.html; https://xrpl.org/nftokenburn.html
     if(isset($this->tx->Owner))
       $this->addAccount($this->tx->Owner, 'OWNER');
+
+    //Add TakerGets,TakerPays issuer - eg. https://xrpl.org/offercreate.html
+    if(isset($this->tx->TakerGets->issuer))
+      $this->addAccount($this->tx->TakerGets->issuer, 'TAKERGETS_ISSUER');
+    if(isset($this->tx->TakerPays->issuer))
+      $this->addAccount($this->tx->TakerPays->issuer, 'TAKERPAYS_ISSUER');
+
+    # Issuer of token from Amount - eg. https://xrpl.org/payment.html
+    if(isset($this->tx->Amount->issuer)) {
+      $this->addAccount($this->tx->Amount->issuer, 'AMOUNT_ISSUER');
+    }
     
-    //TODO AuthAccounts,BidMax,Amount,Amount2,Asset,Asset2 https://xrpl.org/ammbid.html
-
-    //TakerGets TakerPays? - eg. https://xrpl.org/offercreate.html
-
-    //TODO issuer of token from Amount - eg. https://xrpl.org/payment.html
-
-    //TODO RegularSigner
-
     //Add RegularKey - eg. https://xrpl.org/setregularkey.html
     if(isset($this->tx->RegularKey))
       $this->addAccount($this->tx->RegularKey, 'REGULARKEY');
 
-    //TODO Add SignerEntries - eg. https://xrpl.org/signerlistset.html
+    //Add LimitAmount issuer - eg. https://xrpl.org/trustset.html
+    if(isset($this->tx->LimitAmount->issuer))
+      $this->addAccount($this->tx->LimitAmount->issuer, 'LIMITAMOUNT_ISSUER');
 
-    //TODO Add LimitAmount issuer - eg. https://xrpl.org/trustset.html
+    //Add SignerEntries - eg. https://xrpl.org/signerlistset.html
+    if(isset($this->tx->SignerEntries) && \is_array($this->tx->SignerEntries)) {
+      
+      foreach($this->tx->SignerEntries as $s) {
+        if(isset($s->SignerEntry->Account))
+          $this->addAccount($s->SignerEntry->Account, 'SIGNERENTRIES_SIGNERENTRY_ACCOUNT');
+      }
+      unset($s);
+    }
+
+    //TODO AuthAccounts,BidMax,Amount,Amount2,Asset,Asset2 https://xrpl.org/ammbid.html
      
     //Extract all other participants from meta
     $this->extractAccountsFromMeta();
-
     $this->removeSpecialAccounts();
-
     $this->result = \array_keys($this->accounts);
-    //dd($this->accounts);
     //foreach($this->result as $r) {echo "'".$r."',".PHP_EOL;}exit;
   }
 
@@ -126,16 +140,167 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_NFTokenOffer(\stdClass $data)
+  private function extract_AccountRoot(\stdClass $data)
   {
-    # Issuer of token from Amount
-    if(isset($data->Currency->issuer)) {
-      $this->addAccount($data->Owner, 'NFTOKENOFFER_AMOUNTISSUER');
+    # Account
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'ACCOUNTROOT_ACCOUNT');
+    }
+
+    #NFTokenMinter
+    if(isset($data->NFTokenMinter)) {
+      $this->addAccount($data->NFTokenMinter, 'ACCOUNTROOT_NFTOKENMINTER');
+    }
+
+    #RegularKey
+    if(isset($data->RegularKey)) {
+      $this->addAccount($data->RegularKey, 'ACCOUNTROOT_REGULARKEY');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_Amendments(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_AMM(\stdClass $data)
+  {
+    dd('TODO extract_AMM');
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_Check(\stdClass $data)
+  {
+    # Account
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'CHECK_ACCOUNT');
     }
 
     # Destination
+    if(isset($data->Destination)) {
+      $this->addAccount($data->Destination, 'CHECK_DESTINATION');
+    }
+
+    # SendMax
+    if(isset($data->SendMax->issuer)) {
+      $this->addAccount($data->SendMax->issuer, 'CHECK_SENDMAX_ISSUER');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_DepositPreauth(\stdClass $data)
+  {
+    # Account
     if(isset($data->Account)) {
-      $this->addAccount($data->Account, 'NFTOKENOFFER_DESTINATION');
+      $this->addAccount($data->Account, 'DEPOSITPREAUTH_ACCOUNT');
+    }
+
+    # Authorize
+    if(isset($data->Authorize)) {
+      $this->addAccount($data->Authorize, 'DEPOSITPREAUTH_AUTHORIZE');
+    }
+  }
+
+   /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_DirectoryNode(\stdClass $data)
+  {
+    # Owner
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'DIRECTORYNODE_OWNER');
+    }
+
+    # TakerGetsIssuer
+    if(isset($data->TakerGetsIssuer)) {
+      $resolved = AccountId::fromHex($data->TakerGetsIssuer)->toJson();
+      if(\is_string($resolved))
+        $this->addAccount($resolved, 'DIRECTORYNODE_TAKERGETS_ISSUER');
+      unset($resolved);
+    }
+
+    # TakerPaysIssuer
+    if(isset($data->TakerPaysIssuer)) {
+      $resolved = AccountId::fromHex($data->TakerPaysIssuer)->toJson();
+      if(\is_string($resolved))
+        $this->addAccount($resolved, 'DIRECTORYNODE_TAKERPAYS_ISSUER');
+      unset($resolved);
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_Escrow(\stdClass $data)
+  {
+    # Account
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'ESCROW_ACCOUNT');
+    }
+
+    # Destination
+    if(isset($data->Destination)) {
+      $this->addAccount($data->Destination, 'ESCROW_DESTINATION');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_FeeSettings(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_LedgerHashes(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_NegativeUNL(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_NFTokenOffer(\stdClass $data)
+  {
+    # Issuer of token from Amount
+    if(isset($data->Amount->issuer)) {
+      $this->addAccount($data->Amount->issuer, 'NFTOKENOFFER_AMOUNT_ISSUER');
+    }
+
+    # Destination
+    if(isset($data->Destination)) {
+      $this->addAccount($data->Destination, 'NFTOKENOFFER_DESTINATION');
     }
 
     # Owner
@@ -151,19 +316,6 @@ class TxParticipantExtractor
   private function extract_NFTokenPage(\stdClass $data)
   {
     //no affected accounts
-  }
-
-  /**
-   * @see https://xrpl.org/ledger-object-types.html
-   * @todo TakerGetsIssuer TakerPaysIssuer - check this
-   * @return void
-   */
-  private function extract_DirectoryNode(\stdClass $data)
-  {
-    # Owner
-    if(isset($data->Owner)) {
-      $this->addAccount($data->Owner, 'DIRECTORYNODE_OWNER');
-    }
   }
 
   /**
@@ -192,21 +344,16 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_AccountRoot(\stdClass $data)
+  private function extract_PayChannel(\stdClass $data)
   {
     # Account
     if(isset($data->Account)) {
-      $this->addAccount($data->Account, 'ACCOUNTROOT_ACCOUNT');
+      $this->addAccount($data->Account, 'PAYCHANNEL_ACCOUNT');
     }
 
-    #NFTokenMinter
-    if(isset($data->NFTokenMinter)) {
-      $this->addAccount($data->NFTokenMinter, 'ACCOUNTROOT_NFTOKENMINTER');
-    }
-
-    #RegularKey
-    if(isset($data->RegularKey)) {
-      $this->addAccount($data->RegularKey, 'ACCOUNTROOT_REGULARKEY');
+    # Destination
+    if(isset($data->Destination)) {
+      $this->addAccount($data->Destination, 'PAYCHANNEL_DESTINATION');
     }
   }
 
@@ -229,6 +376,34 @@ class TxParticipantExtractor
     # LowLimit
     if(isset($data->LowLimit->issuer)) {
       $this->addAccount($data->LowLimit->issuer, 'RIPPLESTATE_LOWLIMIT_ISSUER');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_SignerList(\stdClass $data)
+  {
+    if(!isset($data->SignerEntries))
+      return;
+
+
+    foreach($data->SignerEntries as $s) {
+      if(isset($s->SignerEntry->Account))
+        $this->addAccount($s->SignerEntry->Account, 'SIGNERLIST_SIGNERENTRY_ACCOUNT');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
+  private function extract_Ticket(\stdClass $data)
+  {
+    # Account
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'TICKET_ACCOUNT'); //owner of ticket
     }
   }
 

@@ -1,0 +1,90 @@
+{
+  "id": "example_TicketCreate",
+  "result": {
+    "Account": "rGoZQPxErbUtYMQefhRvXLN2epnAmWGZ5Y",
+    "Fee": "50000",
+    "Flags": 2147483648,
+    "LastLedgerSequence": 170011333,
+    "Memos": [
+      {
+        "Memo": {
+          "MemoData": "2265794A68624763694F694A46557A49314E694973496E523563434936496B705856434A392E65794A7063334E315A5849694F694A79536E527861336C6C64486C59626D466961555A7A6230645751575234654864544D584D3552314669546C686D4969776959335679636D567559336B694F6949774D6A4D774D7A45314D545A454E5463304E5451794E4555304E6A55304D7A497A4D6A4D794D7A417A4E4441774D4441774D44417749697769635856766447566659335679636D567559336B694F694A59556C41694C434A78645739305A56396862573931626E51694F6949784D6A55694C434A7A5957786C58334E6C6358566C626D4E6C496A6F324F546B314D4445304F5377695A58687761584A6C63313968644349364E6A6B354E6A6B334D7A417A4C434A70595851694F6A45324E4459784D6A49354D445173496D6C7A63794936496C4E766247396E5A57357059794247623356755A47463061573975496E302E72613445634D36444454576B4773744E706C4A496E736C6C6E7552305153744D374B34564D4C53725F5A6C77465464336132487151664A3572307A4E36535167366339616E337962355F45464471586D33635A2D564122"
+        }
+      },
+      {
+        "Memo": {
+          "MemoData": "62323562653839392D326338632D346262382D626436322D353263353563356662346162"
+        }
+      }
+    ],
+    "Sequence": 69950148,
+    "SigningPubKey": "021840E3677C063D8EDABD9CDEC374BF21843EF3924D81580C9BD398E587E26707",
+    "TicketCount": 1,
+    "TransactionType": "TicketCreate",
+    "TxnSignature": "3045022100EE096C3A9DB33E875088567BE18C68F03C23315ECD05B2055346BA8DBB3C0B4C02203964C5DFBEF189CD1CB424ED6D02D4988DE31C53F09E7D14EC44FDEF597E44CC",
+    "date": 699438130,
+    "hash": "738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3",
+    "inLedger": 70010339,
+    "ledger_index": 70010339,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rGoZQPxErbUtYMQefhRvXLN2epnAmWGZ5Y",
+              "Balance": "1809413956",
+              "Flags": 0,
+              "OwnerCount": 89,
+              "Sequence": 69950150,
+              "TicketCount": 44
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "0C4003C57226A8988AD777FC2B2C8B00AC2724BF4DD48A991FE59460BBB61141",
+            "PreviousFields": {
+              "Balance": "1809463956",
+              "OwnerCount": 88,
+              "Sequence": 69950148,
+              "TicketCount": 43
+            },
+            "PreviousTxnID": "88FA43C942B33AA93AD89D7C3BD09EC8B84DD4B5C8831809208DBF207A6EFD5E",
+            "PreviousTxnLgrSeq": 70010331
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "Ticket",
+            "LedgerIndex": "BC76A5E6D1E32881FF1F25CECD7051F96965283B1762C9233F1A54DF3DA5FD12",
+            "NewFields": {
+              "Account": "rGoZQPxErbUtYMQefhRvXLN2epnAmWGZ5Y",
+              "OwnerNode": "3",
+              "TicketSequence": 69950149
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "IndexPrevious": "2",
+              "Owner": "rGoZQPxErbUtYMQefhRvXLN2epnAmWGZ5Y",
+              "RootIndex": "BBA00EB82BFC798C11AA7B83EFCEF1A73349B3E5EC7D1D3521A487E4E9574D2C"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "E8D3E9E0FC9447DED7D55B49173C050D0D33D83BC29CB0D1150DA5D61869839B"
+          }
+        }
+      ],
+      "TransactionIndex": 71,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true,
+    "warnings": [
+      {
+        "id": 1004,
+        "message": "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+      }
+    ]
+  },
+  "status": "success",
+  "type": "response"
+}
