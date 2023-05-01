@@ -28,7 +28,7 @@
       "hardcastle/xrpl_php": "^0.6.5@alpha"
     },
     "require-dev": {
-      "phpunit/phpunit": "^9.5",
+      "phpunit/phpunit": "^10.1",
       "symfony/var-dumper": "^6.1"
     },
     "scripts": {
