@@ -1,0 +1,109 @@
+{
+    "id": "example_TrustSet",
+    "result": {
+        "Account": "rDsNaTF6wGo6Rb2q8PBowRao5rkwjjUnwt",
+        "Amount": "1",
+        "Destination": "rQUhXd7sopuga3taru3jfvc1BgVbscrb1X",
+        "Fee": "11914",
+        "HookParameters": [
+            {
+                "HookParameter": {
+                    "HookParameterName": "4556520100000000000000000000000000000000000000000000000000000002",
+                    "HookParameterValue": "65766E486F7374557064617465526567"
+                }
+            },
+            {
+                "HookParameter": {
+                    "HookParameterName": "4556520100000000000000000000000000000000000000000000000000000003",
+                    "HookParameterValue": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+                }
+            }
+        ],
+        "LastLedgerSequence": 5851168,
+        "Memos": [],
+        "NetworkID": 21338,
+        "Sequence": 1789943,
+        "SigningPubKey": "0366CF276D032067B0548F46D35807A2842FA9EA31FDDFF2F489834D335DB137E8",
+        "TransactionType": "Payment",
+        "TxnSignature": "3044022049C2FDE2936B411E88E72E652CC402B42243FC65052224A33C97C6B27A2360B3022008ADE2FB0FB317CB948CBCDC8755F38A09B439DE443103FD3002A7E27A734F03",
+        "ctid": "C05948180000535A",
+        "date": 745884290,
+        "hash": "B978F225D8E433C593510285EB3AE3DE7E30086F35BAEB7FF78B2EF2EF50EE71",
+        "inLedger": 5851160,
+        "ledger_index": 5851160,
+        "meta": {
+            "AffectedNodes": [
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Flags": 0,
+                            "HookStateData": "0E13AB8E2AF9C46761C8DDA5BD29B0DC4099A5999E5E92EC4482F929AEE68558555300000000000000000000000000000000000000000000000000000000000000000000A857390000000000001400000000000001000000010000009480E26400000000000606DA808164000000000000000000000000000000000000",
+                            "HookStateKey": "455652030000000000000000840D4594B1219EDBD2677A11BF92E60C98F8D5EF",
+                            "OwnerNode": "7"
+                        },
+                        "LedgerEntryType": "HookState",
+                        "LedgerIndex": "155171279F987A9C713CA3C69DCE3025CDCB31B90E2FE62C4094BABA5B60E3D9",
+                        "PreviousFields": {
+                            "HookStateData": "0E13AB8E2AF9C46761C8DDA5BD29B0DC4099A5999E5E92EC4482F929AEE68558555300000000000000000000000000000000000000000000000000000000000000000000A857390000000000001400000000000001000000000000009480E26400000000000606DA808164000000000000000000000000000000000000"
+                        }
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rQUhXd7sopuga3taru3jfvc1BgVbscrb1X",
+                            "Balance": "28842678304",
+                            "Flags": 0,
+                            "OwnerCount": 180,
+                            "Sequence": 1784915
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "345E63077F8C9DF1D60DD91A6C7651A47A09388A58FF3FBAAFEA85E190C3BFE6",
+                        "PreviousFields": {
+                            "Balance": "28842678303"
+                        }
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rDsNaTF6wGo6Rb2q8PBowRao5rkwjjUnwt",
+                            "Balance": "9980159278",
+                            "Domain": "676576656F6562322E65766572646563656E742E6F7267",
+                            "Flags": 8388608,
+                            "MessageKey": "0366CF276D032067B0548F46D35807A2842FA9EA31FDDFF2F489834D335DB137E8",
+                            "OwnerCount": 0,
+                            "Sequence": 1789944
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "87D54264869CDDB9DD20356EA1F75CD705C6CD160C91D181D755D2B72B86CDC0",
+                        "PreviousFields": {
+                            "Balance": "9980171193",
+                            "Sequence": 1789943
+                        }
+                    }
+                }
+            ],
+            "HookExecutions": [
+                {
+                    "HookExecution": {
+                        "HookAccount": "rQUhXd7sopuga3taru3jfvc1BgVbscrb1X",
+                        "HookEmitCount": 0,
+                        "HookExecutionIndex": 0,
+                        "HookHash": "6D86BFCF76D78B9255F269A73F6A7DCD3D9724FD7F5994A244662B5287BE9345",
+                        "HookInstructionCount": "5e1",
+                        "HookResult": 3,
+                        "HookReturnCode": "1fc",
+                        "HookReturnString": "2E2F7372632F72656769737472792E6300",
+                        "HookStateChangeCount": 12
+                    }
+                }
+            ],
+            "TransactionIndex": 0,
+            "TransactionResult": "tesSUCCESS",
+            "delivered_amount": "1"
+        },
+        "validated": true
+    }
+}
+

@@ -406,6 +406,16 @@ class TxParticipantExtractor
     }
   }
 
+  
+  # HOOKS START
+  private function extract_HookState(\stdClass $data)
+  {
+    //no affected accounts
+  }
+  
+
+  # HOOKS END
+
   /**
    * Adds new account to list, or if exists adds context if provided.
    * @return void
