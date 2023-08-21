@@ -1,0 +1,198 @@
+{
+    "id": "1",
+    "result": {
+        "Account": "rKo8nG3i6qmyhcVYV1njnC5JhEYWnwB51w",
+        "Amount": {
+            "currency": "USD",
+            "issuer": "rKo8nG3i6qmyhcVYV1njnC5JhEYWnwB51w",
+            "value": "2"
+        },
+        "Destination": "rssM7AC37o7Qw8DkuWYeqnnSDJvaC6CJDP",
+        "Fee": "13685",
+        "Flags": 2147483648,
+        "HookParameters": [],
+        "Memos": [
+            {
+                "Memo": {
+                    "MemoData": "44",
+                    "MemoFormat": "",
+                    "MemoType": ""
+                }
+            },
+            {
+                "Memo": {
+                    "MemoData": "7F",
+                    "MemoFormat": "",
+                    "MemoType": ""
+                }
+            },
+            {
+                "Memo": {
+                    "MemoData": "000F4240",
+                    "MemoFormat": "",
+                    "MemoType": ""
+                }
+            }
+        ],
+        "NetworkID": 21338,
+        "Sequence": 5747911,
+        "SigningPubKey": "03559FBC9D5D2EC0D3FB4C676D7AB4C3941A6D6B7810333A0BDA041DD7401BE9A7",
+        "TransactionType": "Payment",
+        "TxnSignature": "3045022100C7E1FE913CE129840FC0A0F3ADBDDC307690B11EB2863FF978580C92C58C1B00022017745278351E298C82FA87BA1A9633833C087C63A8291E21E745FD3719DF1BC4",
+        "ctid": "C0599DFA0000535A",
+        "date": 745950832,
+        "hash": "69761E5D22C25BF858DE927E38C755918A3A00A11D68060860933DDC72F411F0",
+        "inLedger": 5873146,
+        "ledger_index": 5873146,
+        "meta": {
+            "AffectedNodes": [
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Flags": 0,
+                            "HookStateData": "82020202026A6B80",
+                            "HookStateKey": "017F000000000000000000000000000000000000000000000000000000000000",
+                            "OwnerNode": "0"
+                        },
+                        "LedgerEntryType": "HookState",
+                        "LedgerIndex": "0E0487FB24FF0787043AA2C95610FAA802D56279B13D0EE978E10F19E87B7499",
+                        "PreviousFields": {
+                            "HookStateData": "FEFEFEFEFEB41900"
+                        }
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Balance": {
+                                "currency": "USD",
+                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                                "value": "42"
+                            },
+                            "Flags": 196608,
+                            "HighLimit": {
+                                "currency": "USD",
+                                "issuer": "rKo8nG3i6qmyhcVYV1njnC5JhEYWnwB51w",
+                                "value": "1000"
+                            },
+                            "HighNode": "0",
+                            "LowLimit": {
+                                "currency": "USD",
+                                "issuer": "rssM7AC37o7Qw8DkuWYeqnnSDJvaC6CJDP",
+                                "value": "1000"
+                            },
+                            "LowNode": "0"
+                        },
+                        "LedgerEntryType": "RippleState",
+                        "LedgerIndex": "1309C6A522D459250210D8057AF87AA7D09CF0F35B3EA05E1876E6EA2026C4B6",
+                        "PreviousFields": {
+                            "Balance": {
+                                "currency": "USD",
+                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                                "value": "40"
+                            }
+                        }
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rKo8nG3i6qmyhcVYV1njnC5JhEYWnwB51w",
+                            "Balance": "10194782459",
+                            "Flags": 0,
+                            "OwnerCount": 4,
+                            "Sequence": 5747912
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "35FA10857A4ECD16E8A12EEDD0B96A08BA0E08BC5D9A1E26D6ACE5188A28050F",
+                        "PreviousFields": {
+                            "Balance": "10194796144",
+                            "Sequence": 5747911
+                        }
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Flags": 0,
+                            "HookStateData": "AA122FE436124200",
+                            "HookStateKey": "007F010000000000000000000000000000000000000000000000000000000000",
+                            "OwnerNode": "0"
+                        },
+                        "LedgerEntryType": "HookState",
+                        "LedgerIndex": "8E569C4337ED8370482C018AC6BCDEA5794B7A765AA73597EE478E80E17C4A4A",
+                        "PreviousFields": {
+                            "HookStateData": "D6EED01CCA0C4380"
+                        }
+                    }
+                },
+                {
+                    "CreatedNode": {
+                        "LedgerEntryType": "EmittedTxn",
+                        "LedgerIndex": "AA140516165952222228B3E4760C03F5F78F17C5403DBEF29187232BF52A76CE",
+                        "NewFields": {
+                            "EmittedTxn": {
+                                "Account": "rssM7AC37o7Qw8DkuWYeqnnSDJvaC6CJDP",
+                                "Amount": {
+                                    "currency": "0000000000000000000000007F50000000000000",
+                                    "issuer": "rssM7AC37o7Qw8DkuWYeqnnSDJvaC6CJDP",
+                                    "value": "2"
+                                },
+                                "Destination": "rKo8nG3i6qmyhcVYV1njnC5JhEYWnwB51w",
+                                "DestinationTag": 0,
+                                "EmitDetails": {
+                                    "EmitBurden": "1",
+                                    "EmitGeneration": 1,
+                                    "EmitHookHash": "0603E1722EACA662BD005CF2A5B5B6BA4D571A0D5743D33897C2DD8CFFC927B3",
+                                    "EmitNonce": "EDD0E1A92FB252796AA26DD214505E6A50D084CEF609DC8CD90BE8A0701F2D30",
+                                    "EmitParentTxnID": "69761E5D22C25BF858DE927E38C755918A3A00A11D68060860933DDC72F411F0"
+                                },
+                                "Fee": "10",
+                                "FirstLedgerSequence": 5873147,
+                                "Flags": 2147483648,
+                                "LastLedgerSequence": 5873151,
+                                "Sequence": 0,
+                                "SigningPubKey": "000000000000000000000000000000000000000000000000000000000000000000",
+                                "SourceTag": 0,
+                                "TransactionType": "Payment"
+                            }
+                        }
+                    }
+                },
+                {
+                    "CreatedNode": {
+                        "LedgerEntryType": "DirectoryNode",
+                        "LedgerIndex": "B4DE823055D00BC12CD78FE1AAF74EE6062195B2629F49A25915A39C64BE1900",
+                        "NewFields": {
+                            "Flags": 4,
+                            "RootIndex": "B4DE823055D00BC12CD78FE1AAF74EE6062195B2629F49A25915A39C64BE1900"
+                        }
+                    }
+                }
+            ],
+            "HookExecutions": [
+                {
+                    "HookExecution": {
+                        "HookAccount": "rssM7AC37o7Qw8DkuWYeqnnSDJvaC6CJDP",
+                        "HookEmitCount": 1,
+                        "HookExecutionIndex": 0,
+                        "HookHash": "0603E1722EACA662BD005CF2A5B5B6BA4D571A0D5743D33897C2DD8CFFC927B3",
+                        "HookInstructionCount": "162a",
+                        "HookResult": 3,
+                        "HookReturnCode": "0",
+                        "HookReturnString": "",
+                        "HookStateChangeCount": 3
+                    }
+                }
+            ],
+            "TransactionIndex": 0,
+            "TransactionResult": "tesSUCCESS",
+            "delivered_amount": {
+                "currency": "USD",
+                "issuer": "rKo8nG3i6qmyhcVYV1njnC5JhEYWnwB51w",
+                "value": "2"
+            }
+        },
+        "validated": true
+    }
+}

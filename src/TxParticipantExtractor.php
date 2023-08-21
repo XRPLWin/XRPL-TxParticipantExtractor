@@ -15,7 +15,7 @@ class TxParticipantExtractor
    */
   const ACCOUNT_ZERO      = 'rrrrrrrrrrrrrrrrrrrrrhoLvTp';
   const ACCOUNT_ONE       = 'rrrrrrrrrrrrrrrrrrrrBZbvji';
-  const ACCOUNT_GENESIS   = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh';
+  const ACCOUNT_GENESIS   = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh'; //XRPL Genesis
   const ACCOUNT_BLACKHOLE = 'rrrrrrrrrrrrrrrrrNAMEtxvNvQ';
   const ACCOUNT_NAN       = 'rrrrrrrrrrrrrrrrrrrn5RM1rHd';
 
@@ -412,6 +412,49 @@ class TxParticipantExtractor
   {
     //no affected accounts
   }
+
+  private function extract_EmittedTxn(\stdClass $data)
+  {
+
+    //Add Account (if exists)
+    if(isset($data->EmittedTxn->Account))
+      $this->addAccount($data->EmittedTxn->Account, 'EMITTED_INITIATOR');
+ 
+    //Add Issuer (if exists)
+    if(isset($data->EmittedTxn->Issuer))
+      $this->addAccount($this->tx->Issuer, 'EMITTED_ISSUER');
+
+    //Add Destination (if exists)
+    if(isset($data->EmittedTxn->Destination))
+      $this->addAccount($data->EmittedTxn->Destination, 'EMITTED_DESTINATION');
+
+    //Add Authorize (if exists) - eg. https://xrpl.org/depositpreauth.html
+    if(isset($data->EmittedTxn->tx->Authorize))
+      $this->addAccount($this->tx->Authorize, 'EMITTED_AUTHORIZE');
+    
+    //Add Owner (if exists) - eg. https://xrpl.org/escrowcancel.html; https://xrpl.org/nftokenburn.html
+    if(isset($data->EmittedTxn->Owner))
+      $this->addAccount($data->EmittedTxn->Owner, 'EMITTED_OWNER');
+
+    //Add TakerGets,TakerPays issuer - eg. https://xrpl.org/offercreate.html
+    if(isset($data->EmittedTxn->TakerGets->issuer))
+      $this->addAccount($data->EmittedTxn->TakerGets->issuer, 'EMITTED_TAKERGETS_ISSUER');
+    if(isset($data->EmittedTxn->TakerPays->issuer))
+      $this->addAccount($data->EmittedTxn->TakerPays->issuer, 'EMITTED_TAKERPAYS_ISSUER');
+
+    # Issuer of token from Amount - eg. https://xrpl.org/payment.html
+    if(isset($data->EmittedTxn->Amount->issuer)) {
+      $this->addAccount($data->EmittedTxn->Amount->issuer, 'EMITTED_AMOUNT_ISSUER');
+    }
+    
+    //Add RegularKey - eg. https://xrpl.org/setregularkey.html
+    if(isset($data->EmittedTxn->RegularKey))
+      $this->addAccount($data->EmittedTxn->RegularKey, 'EMITTED_REGULARKEY');
+
+    //Add LimitAmount issuer - eg. https://xrpl.org/trustset.html
+    if(isset($data->EmittedTxn->LimitAmount->issuer))
+      $this->addAccount($data->EmittedTxn->LimitAmount->issuer, 'EMITTED_LIMITAMOUNT_ISSUER');
+  }
   
 
   # HOOKS END
@@ -447,6 +490,24 @@ class TxParticipantExtractor
   public function result(): array
   {
     return $this->result;
+  }
+  /**
+   * Returns final result but skips EMITTED_ accounts where they are only emitted.
+   * @return array
+   */
+  public function resultWithoutEmitted(): array
+  {
+    $r = [];
+    foreach($this->accounts as $account => $roles) {
+      $include = false;
+      foreach($roles as $role) {
+        if(!\str_starts_with($role,'EMITTED_'))
+          $include = true;
+      }
+      if($include)
+        $r[] = $account;
+    }
+    return $r;
   }
 
   /**
