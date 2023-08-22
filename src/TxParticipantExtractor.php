@@ -413,6 +413,16 @@ class TxParticipantExtractor
     //no affected accounts
   }
 
+  private function extract_Hook(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
+  private function extract_HookDefinition(\stdClass $data)
+  {
+    //no affected accounts
+  }
+
   private function extract_EmittedTxn(\stdClass $data)
   {
 
