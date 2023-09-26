@@ -30,7 +30,7 @@ class TxParticipantExtractor
     $this->tx = $tx;
 
     //Add Account (if exists)
-    if(isset($this->tx->Account))
+    if(isset($this->tx->Account) && $this->tx->Account)
       $this->addAccount($this->tx->Account, 'INITIATOR');
 
     //Add Issuer (if exists)
@@ -82,6 +82,7 @@ class TxParticipantExtractor
      
     //Extract all other participants from meta
     $this->extractAccountsFromMeta();
+    $this->normalizeAccounts();
     $this->removeSpecialAccounts();
     $this->result = \array_keys($this->accounts);
     //foreach($this->result as $r) {echo "'".$r."',".PHP_EOL;}exit;
@@ -102,22 +103,22 @@ class TxParticipantExtractor
       if(isset($n->CreatedNode))
       {
         if(isset($n->CreatedNode->NewFields))
-          $this->extract($n->CreatedNode->NewFields, $n->CreatedNode->LedgerEntryType);
+          $this->extract($n->CreatedNode->NewFields, $n->CreatedNode->LedgerEntryType, 'new');
       }
 
       if(isset($n->ModifiedNode))
       {
         if(isset($n->ModifiedNode->PreviousFields))
-          $this->extract($n->ModifiedNode->PreviousFields, $n->ModifiedNode->LedgerEntryType);
+          $this->extract($n->ModifiedNode->PreviousFields, $n->ModifiedNode->LedgerEntryType, 'prev');
 
         if(isset($n->ModifiedNode->FinalFields))
-          $this->extract($n->ModifiedNode->FinalFields, $n->ModifiedNode->LedgerEntryType);
+          $this->extract($n->ModifiedNode->FinalFields, $n->ModifiedNode->LedgerEntryType, 'final');
       }
 
       if(isset($n->DeletedNode))
       {
         if(isset($n->DeletedNode->FinalFields))
-          $this->extract($n->DeletedNode->FinalFields, $n->DeletedNode->LedgerEntryType);
+          $this->extract($n->DeletedNode->FinalFields, $n->DeletedNode->LedgerEntryType, 'deleted');
       }
     }
   }
@@ -128,10 +129,10 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract(\stdClass $data, string $LedgerEntryType): void
+  private function extract(\stdClass $data, string $LedgerEntryType, ?string $context = null): void
   {
     $subMethod = 'extract_'.$LedgerEntryType;
-    $this->$subMethod($data);
+    $this->$subMethod($data,$context);
     
   }
 
@@ -139,7 +140,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_AccountRoot(\stdClass $data)
+  private function extract_AccountRoot(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -161,7 +162,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_Amendments(\stdClass $data)
+  private function extract_Amendments(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
@@ -170,7 +171,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_AMM(\stdClass $data)
+  private function extract_AMM(\stdClass $data, ?string $context = null)
   {
     dd('TODO extract_AMM');
   }
@@ -179,7 +180,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_Check(\stdClass $data)
+  private function extract_Check(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -201,7 +202,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_DepositPreauth(\stdClass $data)
+  private function extract_DepositPreauth(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -218,7 +219,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_DirectoryNode(\stdClass $data)
+  private function extract_DirectoryNode(\stdClass $data, ?string $context = null)
   {
     # Owner
     if(isset($data->Owner)) {
@@ -246,7 +247,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_Escrow(\stdClass $data)
+  private function extract_Escrow(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -263,7 +264,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_FeeSettings(\stdClass $data)
+  private function extract_FeeSettings(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
@@ -272,7 +273,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_LedgerHashes(\stdClass $data)
+  private function extract_LedgerHashes(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
@@ -281,7 +282,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_NegativeUNL(\stdClass $data)
+  private function extract_NegativeUNL(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
@@ -290,7 +291,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_NFTokenOffer(\stdClass $data)
+  private function extract_NFTokenOffer(\stdClass $data, ?string $context = null)
   {
     # Issuer of token from Amount
     if(isset($data->Amount->issuer)) {
@@ -312,7 +313,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_NFTokenPage(\stdClass $data)
+  private function extract_NFTokenPage(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
@@ -321,7 +322,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_Offer(\stdClass $data)
+  private function extract_Offer(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -343,7 +344,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_PayChannel(\stdClass $data)
+  private function extract_PayChannel(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -360,7 +361,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_RippleState(\stdClass $data)
+  private function extract_RippleState(\stdClass $data, ?string $context = null)
   {
     # Balance
     if(isset($data->Balance->issuer)) {
@@ -382,7 +383,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_SignerList(\stdClass $data)
+  private function extract_SignerList(\stdClass $data, ?string $context = null)
   {
     if(!isset($data->SignerEntries))
       return;
@@ -398,7 +399,7 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_Ticket(\stdClass $data)
+  private function extract_Ticket(\stdClass $data, ?string $context = null)
   {
     # Account
     if(isset($data->Account)) {
@@ -408,22 +409,22 @@ class TxParticipantExtractor
 
   
   # HOOKS START
-  private function extract_HookState(\stdClass $data)
+  private function extract_HookState(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
 
-  private function extract_Hook(\stdClass $data)
+  private function extract_Hook(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
 
-  private function extract_HookDefinition(\stdClass $data)
+  private function extract_HookDefinition(\stdClass $data, ?string $context = null)
   {
     //no affected accounts
   }
 
-  private function extract_EmittedTxn(\stdClass $data)
+  private function extract_EmittedTxn(\stdClass $data, ?string $context = null)
   {
 
     //Add Account (if exists)
@@ -465,6 +466,26 @@ class TxParticipantExtractor
     if(isset($data->EmittedTxn->LimitAmount->issuer))
       $this->addAccount($data->EmittedTxn->LimitAmount->issuer, 'EMITTED_LIMITAMOUNT_ISSUER');
   }
+
+  /**
+   * Introducted 25.09.2023 in Xahau
+   */
+  private function extract_UNLReport(\stdClass $data, ?string $context = null)
+  {
+    $role = 'UNLREPORT_ACTIVE_VALIDATOR';
+    if($context == 'prev' || $context == 'deleted')
+      $role = 'UNLREPORT_OLD_VALIDATOR';
+
+    if(!isset($data->ActiveValidators)) {
+      throw new \Exception('extract_UNLReport ActiveValidators does not exist in medatadata');
+    }
+
+    foreach($data->ActiveValidators as $av) {
+      if(isset($av->ActiveValidator->Account) && \trim((string)$av->ActiveValidator->Account) !== '') {
+        $this->addAccount($av->ActiveValidator->Account, $role);
+      }
+    }
+  }
   
 
   # HOOKS END
@@ -491,6 +512,29 @@ class TxParticipantExtractor
     unset($this->accounts[self::ACCOUNT_GENESIS]);
     unset($this->accounts[self::ACCOUNT_BLACKHOLE]);
     unset($this->accounts[self::ACCOUNT_NAN]);
+  }
+
+  private function normalizeAccounts()
+  {
+    if($this->tx->TransactionType == 'UNLReport') {
+
+      /*
+      "rGsa7f4arJ8JE9ok9LCht6jCu5xBKUKVMq" => array:2 [
+        0 => "UNLREPORT_OLD_VALIDATOR"
+        1 => "UNLREPORT_ACTIVE_VALIDATOR"
+      ]
+      to 
+      "rGsa7f4arJ8JE9ok9LCht6jCu5xBKUKVMq" => array:2 [
+        1 => "UNLREPORT_ACTIVE_VALIDATOR"
+      ]
+      */
+      foreach($this->accounts as $acc => $roles) {
+        if(count($roles) == 2) {
+          $this->accounts[$acc] = ['UNLREPORT_ACTIVE_VALIDATOR'];
+        }
+      }
+    }
+    
   }
 
   /**
