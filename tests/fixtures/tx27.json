@@ -1,0 +1,70 @@
+{
+  "result": {
+    "Account": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+    "Fee": "20",
+    "Flags": 1,
+    "LastLedgerSequence": 6921414,
+    "NetworkID": 21338,
+    "Sequence": 1978470,
+    "SigningPubKey": "023D6C5B232EF7C77E6B5CF65D5C946FED3C4488E3E7C3727CE7A7A2AF3FA5D3BE",
+    "TransactionType": "URITokenMint",
+    "TxnSignature": "3045022100CAF42F3063CE9082236C2A446706477CD965EFDDD15CBA6A07D353578D40FEE6022008BEDF1EB664CA1CAEC06EC6C416B868E90D71DF39B22BE34FDE5FDB9002337B",
+    "URI": "5A585A79624756686332564D564659414151414364586F434E37524E69797537424B347272566754685653484776314A6A514141414234775A67514141414141414141414141414141414369314A314F",
+    "ctid": "C0699CBE0001535A",
+    "date": 749115530,
+    "hash": "A0C30DB283E3462D11DC8FCC087C04F6358142ED46F4EF69CAB33BC44BA8C52E",
+    "inLedger": 6921406,
+    "ledger_index": 6921406,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "Balance": "18971361171",
+              "Domain": "7777772E6E76657665726E6F64657A2E636F6D",
+              "Flags": 8388608,
+              "MessageKey": "023D6C5B232EF7C77E6B5CF65D5C946FED3C4488E3E7C3727CE7A7A2AF3FA5D3BE",
+              "OwnerCount": 1,
+              "Sequence": 1978471
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "400FD88C05F42DE032512B2B30143E35F95A301311E72ED583F3E717DEEBDDA4",
+            "PreviousFields": {
+              "Balance": "18971361191",
+              "OwnerCount": 0,
+              "Sequence": 1978470
+            }
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "URIToken",
+            "LedgerIndex": "4A32D1343365551F30B012B110C86AEFA6652B52844C6A93D1D4F3F703FEEEDC",
+            "NewFields": {
+              "Flags": 1,
+              "Issuer": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "Owner": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "URI": "5A585A79624756686332564D564659414151414364586F434E37524E69797537424B347272566754685653484776314A6A514141414234775A67514141414141414141414141414141414369314A314F"
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "Owner": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "RootIndex": "9B050217E3A3D285A1A63C4D3EF38631B93C80649626A91BD2D4BC846FEB89E3"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "9B050217E3A3D285A1A63C4D3EF38631B93C80649626A91BD2D4BC846FEB89E3"
+          }
+        }
+      ],
+      "TransactionIndex": 1,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
+}

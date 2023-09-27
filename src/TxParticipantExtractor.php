@@ -108,6 +108,7 @@ class TxParticipantExtractor
 
       if(isset($n->ModifiedNode))
       {
+        
         if(isset($n->ModifiedNode->PreviousFields))
           $this->extract($n->ModifiedNode->PreviousFields, $n->ModifiedNode->LedgerEntryType, 'prev');
 
@@ -133,7 +134,6 @@ class TxParticipantExtractor
   {
     $subMethod = 'extract_'.$LedgerEntryType;
     $this->$subMethod($data,$context);
-    
   }
 
   /**
@@ -171,10 +171,10 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract_AMM(\stdClass $data, ?string $context = null)
-  {
-    dd('TODO extract_AMM');
-  }
+  //private function extract_AMM(\stdClass $data, ?string $context = null)
+  //{
+  //  dd('TODO extract_AMM');
+  //}
 
   /**
    * @see https://xrpl.org/ledger-object-types.html
@@ -426,7 +426,6 @@ class TxParticipantExtractor
 
   private function extract_EmittedTxn(\stdClass $data, ?string $context = null)
   {
-
     //Add Account (if exists)
     if(isset($data->EmittedTxn->Account))
       $this->addAccount($data->EmittedTxn->Account, 'EMITTED_INITIATOR');
@@ -486,7 +485,22 @@ class TxParticipantExtractor
       }
     }
   }
-  
+
+  /**
+   * XLS-35
+   * https://github.com/XRPLF/XRPL-Standards/discussions/89
+   */
+  private function extract_URIToken(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Issuer)) {
+      $this->addAccount($data->Issuer, 'ACCOUNTROOT_NFTOKENMINTER'); //backwards compatibility with XLS-20
+      $this->addAccount($data->Issuer, 'ACCOUNTROOT_URITOKENMINTER');
+    }
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'ACCOUNTROOT_NFTOKENOWNER'); //backwards compatibility with XLS-20
+      $this->addAccount($data->Owner, 'ACCOUNTROOT_URITOKENOWNER');
+    }
+  }
 
   # HOOKS END
 

@@ -10,7 +10,7 @@ use XRPLWin\XRPLTxParticipantExtractor\TxParticipantExtractor;
  */
 final class Tx26Test extends TestCase
 {
-    public function testHookDefinition()
+    public function testUnlReport()
     {
         $transaction = file_get_contents(__DIR__.'/fixtures/tx26.json');
         $transaction = \json_decode($transaction);

@@ -1,0 +1,73 @@
+{
+  "result": {
+    "Account": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+    "Fee": "20",
+    "LastLedgerSequence": 6921595,
+    "NetworkID": 21338,
+    "Sequence": 1978473,
+    "SigningPubKey": "023D6C5B232EF7C77E6B5CF65D5C946FED3C4488E3E7C3727CE7A7A2AF3FA5D3BE",
+    "TransactionType": "URITokenBurn",
+    "TxnSignature": "3044022053EFD5245254833641BAF80377D84B8EEB635DBA1B632043DE79395C70B465A702200B9E18DEA52316E27F484A10B5F5A736B5C030B37E63103F0C6541CA499F2D25",
+    "URITokenID": "653F1D2294DB887B761569E487E381682E1D56F9617671BA847463392AC4006C",
+    "ctid": "C0699D730001535A",
+    "date": 749116130,
+    "hash": "604AC71657D631D9979F28A1CC82340303FF0D7F7F689772DE828B76FDD4432F",
+    "inLedger": 6921587,
+    "ledger_index": 6921587,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "IndexNext": "2",
+              "Owner": "rJNTKV22U8n9uBkCsdc8W9ABaiVs1AVwR4",
+              "RootIndex": "8DF1E88CF1D0A31AA9B5180ED6E4A7226F36673AC89ADA90B2EACAF6053F015E"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "38674452E296854560EAE1CAE13D86AE43681DE88EC296DE4CE2B6FB2B36D7CB"
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "Balance": "18971349216",
+              "Domain": "7777772E6E76657665726E6F64657A2E636F6D",
+              "Flags": 8388608,
+              "MessageKey": "023D6C5B232EF7C77E6B5CF65D5C946FED3C4488E3E7C3727CE7A7A2AF3FA5D3BE",
+              "OwnerCount": 0,
+              "Sequence": 1978474
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "400FD88C05F42DE032512B2B30143E35F95A301311E72ED583F3E717DEEBDDA4",
+            "PreviousFields": {
+              "Balance": "18971349236",
+              "OwnerCount": 1,
+              "Sequence": 1978473
+            }
+          }
+        },
+        {
+          "DeletedNode": {
+            "FinalFields": {
+              "Flags": 1,
+              "Issuer": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "Owner": "rJNTKV22U8n9uBkCsdc8W9ABaiVs1AVwR4",
+              "OwnerNode": "1",
+              "PreviousTxnID": "0028B85C2F2020EF5FA2F9C52F003C7421A75D1F73AEB87977416286553273D9",
+              "PreviousTxnLgrSeq": 6920422,
+              "URI": "5A585A79624756686332554141585636416A653054597372757753754B363159453456556878723953593041414141654D42513D"
+            },
+            "LedgerEntryType": "URIToken",
+            "LedgerIndex": "653F1D2294DB887B761569E487E381682E1D56F9617671BA847463392AC4006C"
+          }
+        }
+      ],
+      "TransactionIndex": 1,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
+}

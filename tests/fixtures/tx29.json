@@ -1,0 +1,69 @@
+{
+  "result": {
+    "Account": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+    "Amount": {
+      "currency": "EVR",
+      "issuer": "r9gYbjBfANRfA1JHfaCVfPPGfXYiqQvmhS",
+      "value": "2"
+    },
+    "Fee": "20",
+    "LastLedgerSequence": 6921599,
+    "NetworkID": 21338,
+    "Sequence": 1978475,
+    "SigningPubKey": "023D6C5B232EF7C77E6B5CF65D5C946FED3C4488E3E7C3727CE7A7A2AF3FA5D3BE",
+    "TransactionType": "URITokenCreateSellOffer",
+    "TxnSignature": "304402204095BD0887A20E2477252FE5121103392DFA8A4A13FD58CD6869ED0E0A78EB9102201A6AB770A78FC35C979434F7181486C453E66AD76EB17F0EF8B773275F1F2DF0",
+    "URITokenID": "168EEB5BDF1C2DABA7B7B6E2FC459D25D2F392020A2554F81ECC6F69AA572584",
+    "ctid": "C0699D770001535A",
+    "date": 749116141,
+    "hash": "0C6971BB304942516C9CC0A75F444465B28139ED5B40006312379ED11D54D1B6",
+    "inLedger": 6921591,
+    "ledger_index": 6921591,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Amount": {
+                "currency": "EVR",
+                "issuer": "r9gYbjBfANRfA1JHfaCVfPPGfXYiqQvmhS",
+                "value": "2"
+              },
+              "Flags": 1,
+              "Issuer": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "Owner": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "OwnerNode": "0",
+              "URI": "5A585A79624756686332564D564659414151414264586F434E37524E69797537424B347272566754685653484776314A6A514141414234776167514141414141414141414141414141414369314A314F"
+            },
+            "LedgerEntryType": "URIToken",
+            "LedgerIndex": "168EEB5BDF1C2DABA7B7B6E2FC459D25D2F392020A2554F81ECC6F69AA572584",
+            "PreviousFields": {}
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rswHs4bzLBSyfd2fWtjuzUxAqudfrzRDtT",
+              "Balance": "18971349176",
+              "Domain": "7777772E6E76657665726E6F64657A2E636F6D",
+              "Flags": 8388608,
+              "MessageKey": "023D6C5B232EF7C77E6B5CF65D5C946FED3C4488E3E7C3727CE7A7A2AF3FA5D3BE",
+              "OwnerCount": 1,
+              "Sequence": 1978476
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "400FD88C05F42DE032512B2B30143E35F95A301311E72ED583F3E717DEEBDDA4",
+            "PreviousFields": {
+              "Balance": "18971349196",
+              "Sequence": 1978475
+            }
+          }
+        }
+      ],
+      "TransactionIndex": 1,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
