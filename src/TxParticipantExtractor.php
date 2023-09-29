@@ -475,13 +475,15 @@ class TxParticipantExtractor
     if($context == 'prev' || $context == 'deleted')
       $role = 'UNLREPORT_OLD_VALIDATOR';
 
-    if(!isset($data->ActiveValidators)) {
-      throw new \Exception('extract_UNLReport ActiveValidators does not exist in medatadata');
-    }
-
-    foreach($data->ActiveValidators as $av) {
-      if(isset($av->ActiveValidator->Account) && \trim((string)$av->ActiveValidator->Account) !== '') {
-        $this->addAccount($av->ActiveValidator->Account, $role);
+      
+    //if(!isset($data->ActiveValidators)) {
+    //  throw new \Exception('extract_UNLReport ActiveValidators does not exist in medatadata');
+    //}
+    if(isset($data->ActiveValidators)) {
+      foreach($data->ActiveValidators as $av) {
+        if(isset($av->ActiveValidator->Account) && \trim((string)$av->ActiveValidator->Account) !== '') {
+          $this->addAccount($av->ActiveValidator->Account, $role);
+        }
       }
     }
   }
