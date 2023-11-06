@@ -79,7 +79,7 @@ class TxParticipantExtractor
     }
 
     //TODO AuthAccounts,BidMax,Amount,Amount2,Asset,Asset2 https://xrpl.org/ammbid.html
-     
+  
     //Extract all other participants from meta
     $this->extractAccountsFromMeta();
     $this->normalizeAccounts();
@@ -95,11 +95,12 @@ class TxParticipantExtractor
    */
   private function extractAccountsFromMeta(): void
   {
-   
-    if(!isset($this->tx->meta->AffectedNodes))
+    $meta = isset($this->tx->meta) ? $this->tx->meta : $this->tx->metaData;
+
+    if(!isset($meta->AffectedNodes))
       return;
       
-    foreach($this->tx->meta->AffectedNodes as $n)
+    foreach($meta->AffectedNodes as $n)
     {
       if(isset($n->CreatedNode))
       {
