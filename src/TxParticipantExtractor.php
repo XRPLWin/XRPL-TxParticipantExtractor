@@ -95,20 +95,21 @@ class TxParticipantExtractor
    */
   private function extractAccountsFromMeta(): void
   {
+   
     if(!isset($this->tx->meta->AffectedNodes))
       return;
-    
+      
     foreach($this->tx->meta->AffectedNodes as $n)
     {
       if(isset($n->CreatedNode))
       {
+        
         if(isset($n->CreatedNode->NewFields))
           $this->extract($n->CreatedNode->NewFields, $n->CreatedNode->LedgerEntryType, 'new');
       }
 
       if(isset($n->ModifiedNode))
       {
-        
         if(isset($n->ModifiedNode->PreviousFields))
           $this->extract($n->ModifiedNode->PreviousFields, $n->ModifiedNode->LedgerEntryType, 'prev');
 
