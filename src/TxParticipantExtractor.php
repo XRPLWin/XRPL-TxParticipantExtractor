@@ -23,9 +23,7 @@ class TxParticipantExtractor
   private array $result = [];
   private array $accounts = [];
 
-
-
-  public function __construct(\stdClass $tx)
+  public function __construct(\stdClass $tx, array $options = [])
   {
     $this->tx = $tx;
 
@@ -83,7 +81,12 @@ class TxParticipantExtractor
     //Extract all other participants from meta
     $this->extractAccountsFromMeta();
     $this->normalizeAccounts();
-    $this->removeSpecialAccounts();
+    if(isset($options['allowSpecialAccounts']) && $options['allowSpecialAccounts']) {
+      //do not remove special accounts
+    } else {
+      $this->removeSpecialAccounts();
+    }
+      
     $this->result = \array_keys($this->accounts);
     //foreach($this->result as $r) {echo "'".$r."',".PHP_EOL;}exit;
   }

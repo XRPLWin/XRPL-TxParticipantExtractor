@@ -35,6 +35,8 @@ $txResult = [
 ]; //see tests/fixtures/tx01.json
 
 $extractor = new TxParticipantExtractor((object)$txResult);
+//To allow special accounts use:
+//$extractor = new TxParticipantExtractor((object)$txResult,['allowSpecialAccounts' => true]);
 $participantList = $extractor->result();
 
 /*
