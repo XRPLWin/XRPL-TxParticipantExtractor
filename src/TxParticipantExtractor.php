@@ -493,6 +493,11 @@ class TxParticipantExtractor
     }
   }
 
+  private function extract_ImportVLSequence(\stdClass $data, ?string $context = null)
+  {
+    //no affected accounts
+  }
+
   /**
    * XLS-35
    * https://github.com/XRPLF/XRPL-Standards/discussions/89
