@@ -6,7 +6,7 @@
 
 ## Description
 
-Parses any XRPL Transaction and extracts all participating accounts. This means initiators, balance change participants, signers, regularkey, token issuer accounts - everything.
+Parses any XRPL Transaction and extracts all participating accounts. This means initiators, balance change participants, signers, transaction signer, regularkey, token issuer accounts - everything.
 
 ### Note
 
@@ -76,8 +76,9 @@ $participantDetails = $extractor->accounts();
 ├     [rJWSJ8b2DxpvbhJjTA3ZRiEK2xsxZNHaLP] => Array
 ├         (
 ├             [0] => INITIATOR
-├             [1] => RIPPLESTATE_HIGHLIMIT_ISSUER  
-├             [2] => ACCOUNTROOT_ACCOUNT
+├             [1] => TXSIGNER
+├             [2] => RIPPLESTATE_HIGHLIMIT_ISSUER  
+├             [3] => ACCOUNTROOT_ACCOUNT
 ├         )
 ├
 ├     [rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq] => Array

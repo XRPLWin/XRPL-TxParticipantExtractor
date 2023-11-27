@@ -1,0 +1,121 @@
+{
+  "result": {
+    "Account": "rWinEUKtN3BmYdDoGU6HZ7tTG54BeCAiz",
+    "Fee": "12",
+    "LastLedgerSequence": 83646090,
+    "Memos": [
+      {
+        "Memo": {
+          "MemoData": "5852504C57696E202D204E4654204275726E2078417070206175746F2D66696E69736820457363726F77",
+          "MemoType": "6465736372697074696F6E"
+        }
+      },
+      {
+        "Memo": {
+          "MemoData": "66303937373062382D643434662D343336322D626531302D316336333230356633396234",
+          "MemoType": "7265666964"
+        }
+      }
+    ],
+    "OfferSequence": 63029402,
+    "Owner": "rDL7Fiq6QKmKeJBNSD6AmaaSqEc7R93JPf",
+    "Sequence": 68969126,
+    "SigningPubKey": "02431B541C2CF63EB5B47ACDF41A15AA78895EA471DFCFFE3AF9E0497B4907CE9C",
+    "TransactionType": "EscrowFinish",
+    "TxnSignature": "30450221008BF8290931F417417DA8B16666F2E2340BF5B0D66976494E80E8C825B0FB927202206CCD0973F9C3871C6F36E041C472C4ECF18EA7C5ED0A63F1B055EA3139656152",
+    "ctid": "C4FC5678002B0000",
+    "date": 752262662,
+    "hash": "4BD885EEC1A87E03DB5AB46C05FAF944657E22A25B6D935BCCCE1EB0852597B0",
+    "inLedger": 83646072,
+    "ledger_index": 83646072,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "IndexPrevious": "2",
+              "Owner": "rDL7Fiq6QKmKeJBNSD6AmaaSqEc7R93JPf",
+              "RootIndex": "CE9E8833EF967B31D6C2CA088942D4944EF4BB8AB574652B4B8400EAC0BE4029"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "0A377C6C3E8DBDEDAF592C72C7D1C7B84964AE612C2086205F6A647B01BAA02E"
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rDL7Fiq6QKmKeJBNSD6AmaaSqEc7R93JPf",
+              "Balance": "290112698",
+              "Flags": 0,
+              "OwnerCount": 89,
+              "Sequence": 63029408
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "23C827D9DCBA9EA22227A3BC0D2034DCA1D6B32692FCE6358D8E722B0D25A3B7",
+            "PreviousFields": {
+              "OwnerCount": 90
+            },
+            "PreviousTxnID": "D2AFAD9628FAA31130D3929649380030FCE43431A5E6492F8E3B66D056DA6F4C",
+            "PreviousTxnLgrSeq": 83645932
+          }
+        },
+        {
+          "DeletedNode": {
+            "FinalFields": {
+              "Account": "rDL7Fiq6QKmKeJBNSD6AmaaSqEc7R93JPf",
+              "Amount": "2000000",
+              "CancelAfter": 752434780,
+              "Destination": "rWinEUKtN3BmYdDoGU6HZ7tTG54BeCAiz",
+              "DestinationNode": "0",
+              "FinishAfter": 752262580,
+              "Flags": 0,
+              "OwnerNode": "3",
+              "PreviousTxnID": "EBE813F18AFBDDDFC9D672B6B6AE327571C4EA1D8A9DB80B147C7537108F1FCC",
+              "PreviousTxnLgrSeq": 83645896
+            },
+            "LedgerEntryType": "Escrow",
+            "LedgerIndex": "668D2B10B8FFB73D4D80C50003A60E6799E6CDA5EA24E96F75E931442AF4B2AF"
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "Owner": "rWinEUKtN3BmYdDoGU6HZ7tTG54BeCAiz",
+              "RootIndex": "8643B8275BD7746BE85E3A1AC054D720DFB1CE867AC4D545CC4A5964B9B693C1"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "8643B8275BD7746BE85E3A1AC054D720DFB1CE867AC4D545CC4A5964B9B693C1"
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rWinEUKtN3BmYdDoGU6HZ7tTG54BeCAiz",
+              "Balance": "74251297",
+              "Domain": "7872706C2E77696E",
+              "EmailHash": "0932DB38F98414DE88E17DFC79325588",
+              "Flags": 0,
+              "OwnerCount": 1,
+              "RegularKey": "rMaxn4x8jLh4i5oUJHzBfDesAigQAmLyTH",
+              "Sequence": 68969127
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "D320C26991868F5D1E4EF9649F7BF87DD893B9954F15534BFD913D5E016E3EC0",
+            "PreviousFields": {
+              "Balance": "72251309",
+              "Sequence": 68969126
+            },
+            "PreviousTxnID": "EBE813F18AFBDDDFC9D672B6B6AE327571C4EA1D8A9DB80B147C7537108F1FCC",
+            "PreviousTxnLgrSeq": 83645896
+          }
+        }
+      ],
+      "TransactionIndex": 43,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
+}

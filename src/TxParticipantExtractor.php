@@ -3,6 +3,7 @@
 namespace XRPLWin\XRPLTxParticipantExtractor;
 
 use XRPL_PHP\Core\RippleBinaryCodec\Types\AccountId;
+use XRPL_PHP\Core\CoreUtilities as XRPLPHPUtilities;
 
 /**
  * Transaction Participant Extractor
@@ -61,6 +62,12 @@ class TxParticipantExtractor
     //Add RegularKey - eg. https://xrpl.org/setregularkey.html
     if(isset($this->tx->RegularKey))
       $this->addAccount($this->tx->RegularKey, 'REGULARKEY');
+
+    //Add transaction signer (derived from SigningPubKey field)
+    if(isset($this->tx->SigningPubKey) && \is_string($this->tx->SigningPubKey) && $this->tx->SigningPubKey !== '') {
+      $signer = $this->pubkeyToAccount($this->tx->SigningPubKey);
+      $this->addAccount($signer, 'TXSIGNER');
+    }
 
     //Add LimitAmount issuer - eg. https://xrpl.org/trustset.html
     if(isset($this->tx->LimitAmount->issuer))
@@ -515,6 +522,11 @@ class TxParticipantExtractor
   }
 
   # HOOKS END
+
+  private function pubkeyToAccount(string $SigningPubKey): string
+  {
+    return XRPLPHPUtilities::deriveAddress($SigningPubKey);
+  }
 
   /**
    * Adds new account to list, or if exists adds context if provided.

@@ -42,6 +42,19 @@ final class Tx01Test extends TestCase
             "rETSmijMPXT9fnDbLADZnecxgkoJJ6iKUA",
             "rKNRP7Cim1ekmrVQp4NDN9gTh6EVVY1M3F",
         ], $parsedTransaction);
+
+        $accounts = $TxParticipantExtractor->accounts();
+
+        //check who signed (initiator signed)
+        $this->assertEquals([
+            'INITIATOR',
+            'TXSIGNER',
+            'RIPPLESTATE_HIGHLIMIT_ISSUER',
+            'ACCOUNTROOT_ACCOUNT'
+        ], $accounts['rJWSJ8b2DxpvbhJjTA3ZRiEK2xsxZNHaLP']);
+
+        
+        //dd($accounts);
         
     }
 }
