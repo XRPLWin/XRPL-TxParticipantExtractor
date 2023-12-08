@@ -444,7 +444,7 @@ class TxParticipantExtractor
  
     //Add Issuer (if exists)
     if(isset($data->EmittedTxn->Issuer))
-      $this->addAccount($this->tx->Issuer, 'EMITTED_ISSUER');
+      $this->addAccount($data->EmittedTxn->Issuer, 'EMITTED_ISSUER');
 
     //Add Destination (if exists)
     if(isset($data->EmittedTxn->Destination))
@@ -452,7 +452,7 @@ class TxParticipantExtractor
 
     //Add Authorize (if exists) - eg. https://xrpl.org/depositpreauth.html
     if(isset($data->EmittedTxn->tx->Authorize))
-      $this->addAccount($this->tx->Authorize, 'EMITTED_AUTHORIZE');
+      $this->addAccount($data->EmittedTxn->tx->Authorize, 'EMITTED_AUTHORIZE');
     
     //Add Owner (if exists) - eg. https://xrpl.org/escrowcancel.html; https://xrpl.org/nftokenburn.html
     if(isset($data->EmittedTxn->Owner))

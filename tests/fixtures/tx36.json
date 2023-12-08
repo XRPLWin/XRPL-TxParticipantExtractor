@@ -1,0 +1,131 @@
+{
+  "result": {
+    "Account": "rGTHeSRizAcAQkTvnGuoz3N4YzcDrxH8b9",
+    "Amount": "1000000",
+    "Destination": "rKDjeYvaDKhsBaaNDeo41JgPhkgSaSqMoR",
+    "Fee": "7283",
+    "Flags": 2147483648,
+    "HookParameters": [],
+    "Memos": [],
+    "NetworkID": 21338,
+    "Sequence": 339738,
+    "SigningPubKey": "0322D70BAED45A5E1B5DFBF042010587560E68880EEBE8239B1984F98DCDAC192E",
+    "TransactionType": "Payment",
+    "TxnSignature": "304402203AC49D1BF3C0131D83AAEFE27F464AEAA30D61B9F16AEC4A919E6BAEDCCE197E022060EC83812A1A34819A40285F47B9DAB0E62FB4C5163805CB7C446494FD20F8A0",
+    "ctid": "C01192E40000535A",
+    "date": 731669742,
+    "hash": "7FC519A66383B3CFD94CB35D7F10FBEC96901424515F9B1BD5F3B8AEB2555056",
+    "inLedger": 1151716,
+    "ledger_index": 1151716,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "EmittedTxn",
+            "LedgerIndex": "0BC103E5B7FB23E577C3A7B97E02725F337568AD23F1095DB7624C991A3216E8",
+            "NewFields": {
+              "EmittedTxn": {
+                "Account": "rKDjeYvaDKhsBaaNDeo41JgPhkgSaSqMoR",
+                "EmitDetails": {
+                  "EmitBurden": "1",
+                  "EmitGeneration": 1,
+                  "EmitHookHash": "C304CC4870FB369D1D97FC4C0D8797AD63BC9BEEEFFF8372E633D0C2881B966F",
+                  "EmitNonce": "6B6318AEA0094A787FC5BED42AC1F968551EB14E289F5CDB7870623D774F24DB",
+                  "EmitParentTxnID": "7FC519A66383B3CFD94CB35D7F10FBEC96901424515F9B1BD5F3B8AEB2555056"
+                },
+                "Fee": "10",
+                "FirstLedgerSequence": 1151717,
+                "Flags": 2147483648,
+                "Issuer": "rGTHeSRizAcAQkTvnGuoz3N4YzcDrxH8b9",
+                "LastLedgerSequence": 1151721,
+                "NFTokenTaxon": 42,
+                "Sequence": 0,
+                "SigningPubKey": "000000000000000000000000000000000000000000000000000000000000000000",
+                "TransactionType": "NFTokenMint"
+              }
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rKDjeYvaDKhsBaaNDeo41JgPhkgSaSqMoR",
+              "AccountTxnID": "6E72C7708ED662672B8231A445D539BFECFA74391BB4534AA222B0664E13B7F0",
+              "Balance": "10392506667",
+              "Domain": "6578616D706C652E636F6D",
+              "EmailHash": "0BC83CB571CD1C50BA6F3E8A78EF1346",
+              "Flags": 8388608,
+              "HookNamespaces": [
+                "9999999999999999999999999999999999999999999999999999999999999999",
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              ],
+              "HookStateCount": 2,
+              "MessageKey": "03C703E2565E00FEEFF7B49B4BAD54E6302E44D8220EB008D2D73EC0C6428207EF",
+              "MintedNFTokens": 2,
+              "OwnerCount": 11,
+              "Sequence": 339861,
+              "TickSize": 8
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "30B61CF1AF9CA74E255432059918D88D61ADFF58C18BF6FDA7603834D5ABBD08",
+            "PreviousFields": {
+              "Balance": "10391506667"
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rGTHeSRizAcAQkTvnGuoz3N4YzcDrxH8b9",
+              "Balance": "19807748800",
+              "Flags": 0,
+              "HookNamespaces": [
+                "D9E9A7DA1936E01C92E4F567D3F6F718932217F022353BDCE4DDA0E206E67788",
+                "3333333333333333333333333333333333333333333333333333333333333333"
+              ],
+              "HookStateCount": 4,
+              "OwnerCount": 4,
+              "Sequence": 339739
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "7421B7CF9FCCD57783210A8C242AB79DEA60EC7734F736E6B81BF633CDE311FF",
+            "PreviousFields": {
+              "Balance": "19808756083",
+              "Sequence": 339738
+            }
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "B4DE823055D00BC12CD78FE1AAF74EE6062195B2629F49A25915A39C64BE1900",
+            "NewFields": {
+              "Flags": 4,
+              "RootIndex": "B4DE823055D00BC12CD78FE1AAF74EE6062195B2629F49A25915A39C64BE1900"
+            }
+          }
+        }
+      ],
+      "HookExecutions": [
+        {
+          "HookExecution": {
+            "HookAccount": "rKDjeYvaDKhsBaaNDeo41JgPhkgSaSqMoR",
+            "HookEmitCount": 1,
+            "HookExecutionIndex": 0,
+            "HookHash": "C304CC4870FB369D1D97FC4C0D8797AD63BC9BEEEFFF8372E633D0C2881B966F",
+            "HookInstructionCount": "394",
+            "HookResult": 3,
+            "HookReturnCode": "0",
+            "HookReturnString": "",
+            "HookStateChangeCount": 0
+          }
+        }
+      ],
+      "TransactionIndex": 0,
+      "TransactionResult": "tesSUCCESS",
+      "delivered_amount": "1000000"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
