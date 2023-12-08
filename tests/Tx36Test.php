@@ -6,11 +6,11 @@ use PHPUnit\Framework\TestCase;
 use XRPLWin\XRPLTxParticipantExtractor\TxParticipantExtractor;
 
 /***
- * Payment from xahau testnet - missing issuer field
+ * Payment from xahau testnet
  */
 final class Tx36Test extends TestCase
 {
-    public function testEscrowFinishSignedWithRegularKey()
+    public function testPaymentWithEmittedTxn()
     {
         $transaction = file_get_contents(__DIR__.'/fixtures/tx36.json');
         $transaction = \json_decode($transaction);
