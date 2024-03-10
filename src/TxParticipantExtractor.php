@@ -183,10 +183,42 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  //private function extract_AMM(\stdClass $data, ?string $context = null)
-  //{
-  //  dd('TODO extract_AMM');
-  //}
+  private function extract_AMM(\stdClass $data, ?string $context = null)
+  {
+    //Asset 1
+    if(!\is_string($data->Asset)) {
+      $this->addAccount($data->Asset->issuer, 'AMM_ASSET1_ISSUER');
+    }
+
+    //Asset 2
+    if(!\is_string($data->Asset2)) {
+      $this->addAccount($data->Asset2->issuer, 'AMM_ASSET2_ISSUER');
+    }
+
+    //AuctionSlot
+    if(isset($data->AuctionSlot)) {
+      if(isset($data->AuctionSlot->Account))
+        $this->addAccount($data->Asset->issuer, 'AMM_AUCTIONSLOT_ACCOUNT');
+
+      if(isset($data->AuctionSlot->Price) && !\is_string($data->AuctionSlot->Price) && isset($data->AuctionSlot->Price->issuer))
+        $this->addAccount($data->AuctionSlot->Price->issuer, 'AMM_AUCTIONSLOT_PRICE_ISSUER');
+    }
+
+    //VoteSlots
+    if(isset($data->VoteSlots) && \is_array($data->VoteSlots)) {
+      foreach($data->VoteSlots as $vs) {
+        if(isset($vs->Account)) {
+          $this->addAccount($vs->Account, 'AMM_VOTEENTRY_ACCOUNT');
+        }
+      }
+    }
+
+    //LPTokenBalance
+    if(isset($data->LPTokenBalance) && isset($data->LPTokenBalance->issuer)) {
+      $this->addAccount($data->LPTokenBalance->issuer, 'AMM_LPTOKENBALANCE_ISSUER');
+    }
+
+  }
 
   /**
    * @see https://xrpl.org/ledger-object-types.html
