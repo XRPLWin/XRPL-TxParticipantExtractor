@@ -58,6 +58,11 @@ class TxParticipantExtractor
     if(isset($this->tx->Amount->issuer)) {
       $this->addAccount($this->tx->Amount->issuer, 'AMOUNT_ISSUER');
     }
+
+    # Issuer of token from Amount2 - AMM
+    if(isset($this->tx->Amount2->issuer)) {
+      $this->addAccount($this->tx->Amount2->issuer, 'AMOUNT2_ISSUER');
+    }
     
     //Add RegularKey - eg. https://xrpl.org/setregularkey.html
     if(isset($this->tx->RegularKey))

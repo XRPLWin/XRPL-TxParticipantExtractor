@@ -22,8 +22,8 @@ final class Tx37Test extends TestCase
         $this->assertEquals([
             'r8ZUGctKnnKETutuTSVVU1tmMicG2Dsp5', //initiator
             'rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd', //Amount1 issuer
-            'raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy',
             'raihScAvmDTQNZUhxv9qrQbdbR7kwgTZSD', //Amount2 issuer
+            'raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy',
             
         ], $parsedTransaction);
 
@@ -39,19 +39,20 @@ final class Tx37Test extends TestCase
             'AMM_AUCTIONSLOT_ACCOUNT',
             'AMM_VOTEENTRY_ACCOUNT'
         ], $accounts['r8ZUGctKnnKETutuTSVVU1tmMicG2Dsp5']);
-
+        
         $this->assertEquals([
+            'AMOUNT2_ISSUER',
             'DIRECTORYNODE_OWNER',
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
             'AMM_ASSET1_ISSUER'
-        ], $accounts['raihScAvmDTQNZUhxv9qrQbdbR7kwgTZSD']); //Asset 1
+        ], $accounts['raihScAvmDTQNZUhxv9qrQbdbR7kwgTZSD']); //Amount2, Asset 1
 
         $this->assertEquals([
             'AMOUNT_ISSUER',
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
             'DIRECTORYNODE_OWNER',
             'AMM_ASSET2_ISSUER',
-        ], $accounts['rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd']); //Asset 2
+        ], $accounts['rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd']); //Amount2, Asset 2
 
         $this->assertEquals([
             'RIPPLESTATE_LOWLIMIT_ISSUER',
@@ -60,7 +61,7 @@ final class Tx37Test extends TestCase
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
             'AMM_AUCTIONSLOT_PRICE_ISSUER',
             'AMM_LPTOKENBALANCE_ISSUER',
-        ], $accounts['raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy']); //Asset 2
+        ], $accounts['raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy']);
        
     }
 }
