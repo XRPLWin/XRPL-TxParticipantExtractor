@@ -63,6 +63,22 @@ class TxParticipantExtractor
     if(isset($this->tx->Amount2->issuer)) {
       $this->addAccount($this->tx->Amount2->issuer, 'AMOUNT2_ISSUER');
     }
+
+    # AMM Bid (BidMax)
+    if(isset($this->tx->BidMax) && !\is_string($this->tx->BidMax) && isset($this->tx->BidMax->issuer)) {
+      $this->addAccount($this->tx->BidMax->issuer, 'AMM_BIDMAX_ISSUER');
+    }
+    # AMM Bid (BidMin)
+    if(isset($this->tx->BidMin) && !\is_string($this->tx->BidMin) && isset($this->tx->BidMin->issuer)) {
+      $this->addAccount($this->tx->BidMin->issuer, 'AMM_BIDMIN_ISSUER');
+    }
+
+    # AMM (AuthAccounts) - eg. In Bid
+    if(isset($this->tx->AuthAccounts) && \is_array($this->tx->AuthAccounts)) {
+      foreach($this->tx->AuthAccounts as $_aa) {
+        $this->addAccount($_aa->AuthAccount->Account, 'AUTH_ACCOUNT');
+      }
+    }
     
     //Add RegularKey - eg. https://xrpl.org/setregularkey.html
     if(isset($this->tx->RegularKey))
