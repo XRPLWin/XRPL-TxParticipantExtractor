@@ -35,14 +35,15 @@ final class Tx37Test extends TestCase
             'TXSIGNER',
             'DIRECTORYNODE_OWNER',
             'ACCOUNTROOT_ACCOUNT',
-            'RIPPLESTATE_LOWLIMIT_ISSUER'
+            'RIPPLESTATE_LOWLIMIT_ISSUER',
+            'AMM_AUCTIONSLOT_ACCOUNT',
+            'AMM_VOTEENTRY_ACCOUNT'
         ], $accounts['r8ZUGctKnnKETutuTSVVU1tmMicG2Dsp5']);
 
         $this->assertEquals([
             'DIRECTORYNODE_OWNER',
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
-            'AMM_ASSET1_ISSUER',
-            'AMM_AUCTIONSLOT_ACCOUNT',
+            'AMM_ASSET1_ISSUER'
         ], $accounts['raihScAvmDTQNZUhxv9qrQbdbR7kwgTZSD']); //Asset 1
 
         $this->assertEquals([

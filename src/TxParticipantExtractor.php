@@ -186,19 +186,19 @@ class TxParticipantExtractor
   private function extract_AMM(\stdClass $data, ?string $context = null)
   {
     //Asset 1
-    if(!\is_string($data->Asset)) {
+    if(isset($data->Asset) && !\is_string($data->Asset) && isset($data->Asset->issuer)) {
       $this->addAccount($data->Asset->issuer, 'AMM_ASSET1_ISSUER');
     }
 
     //Asset 2
-    if(!\is_string($data->Asset2)) {
+    if(isset($data->Asset2) && !\is_string($data->Asset2) && isset($data->Asset2->issuer)) {
       $this->addAccount($data->Asset2->issuer, 'AMM_ASSET2_ISSUER');
     }
 
     //AuctionSlot
     if(isset($data->AuctionSlot)) {
       if(isset($data->AuctionSlot->Account))
-        $this->addAccount($data->Asset->issuer, 'AMM_AUCTIONSLOT_ACCOUNT');
+        $this->addAccount($data->AuctionSlot->Account, 'AMM_AUCTIONSLOT_ACCOUNT');
 
       if(isset($data->AuctionSlot->Price) && !\is_string($data->AuctionSlot->Price) && isset($data->AuctionSlot->Price->issuer))
         $this->addAccount($data->AuctionSlot->Price->issuer, 'AMM_AUCTIONSLOT_PRICE_ISSUER');
@@ -207,8 +207,9 @@ class TxParticipantExtractor
     //VoteSlots
     if(isset($data->VoteSlots) && \is_array($data->VoteSlots)) {
       foreach($data->VoteSlots as $vs) {
-        if(isset($vs->Account)) {
-          $this->addAccount($vs->Account, 'AMM_VOTEENTRY_ACCOUNT');
+        
+        if(isset($vs->VoteEntry) && isset($vs->VoteEntry->Account)) {
+          $this->addAccount($vs->VoteEntry->Account, 'AMM_VOTEENTRY_ACCOUNT');
         }
       }
     }
