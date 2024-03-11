@@ -50,6 +50,7 @@ final class Tx40Test extends TestCase
 
         $this->assertEquals([
             'AMM_AUCTIONSLOT_PRICE_ISSUER',
+            'AMM_ACCOUNT',
             'AMM_LPTOKENBALANCE_ISSUER',
         ], $accounts['rhjVJF4ccwbnSCU3gVvpyi6KgqUz8bLmcy']);
 

@@ -190,6 +190,11 @@ class TxParticipantExtractor
    */
   private function extract_AMM(\stdClass $data, ?string $context = null)
   {
+    //AMM Account ID
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'AMM_ACCOUNT');
+    }
+
     //Asset 1
     if(isset($data->Asset) && !\is_string($data->Asset) && isset($data->Asset->issuer)) {
       $this->addAccount($data->Asset->issuer, 'AMM_ASSET1_ISSUER');

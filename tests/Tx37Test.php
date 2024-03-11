@@ -23,7 +23,7 @@ final class Tx37Test extends TestCase
             'r8ZUGctKnnKETutuTSVVU1tmMicG2Dsp5', //initiator
             'rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd', //Amount1 issuer
             'raihScAvmDTQNZUhxv9qrQbdbR7kwgTZSD', //Amount2 issuer
-            'raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy',
+            'raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy', //AMM account id
             
         ], $parsedTransaction);
 
@@ -59,6 +59,7 @@ final class Tx37Test extends TestCase
             'DIRECTORYNODE_OWNER',
             'ACCOUNTROOT_ACCOUNT',
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
+            'AMM_ACCOUNT',
             'AMM_AUCTIONSLOT_PRICE_ISSUER',
             'AMM_LPTOKENBALANCE_ISSUER',
         ], $accounts['raonGnW61wAAjphXRiRh4Lva3nK6Qxbbiy']);

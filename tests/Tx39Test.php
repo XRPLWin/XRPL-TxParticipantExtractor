@@ -44,21 +44,21 @@ final class Tx39Test extends TestCase
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
             'DIRECTORYNODE_OWNER'
         ], $accounts['rBsnqu7dx1ZETaTwZpTNKfmxaSHveJbAWr']);
-
+        
         $this->assertEquals([
             'AMOUNT2_ISSUER',
             'AMM_ASSET2_ISSUER',
             'RIPPLESTATE_HIGHLIMIT_ISSUER',
         ], $accounts['rPsLc5urbzLd5S39MWDo8GfkukqTTvdxvt']);
-
+       
         $this->assertEquals([
             'AMM_LPTOKENBALANCE_ISSUER',
+            'AMM_ACCOUNT',
             'AMM_AUCTIONSLOT_PRICE_ISSUER',
             'RIPPLESTATE_LOWLIMIT_ISSUER',
             'DIRECTORYNODE_OWNER',
             'ACCOUNTROOT_ACCOUNT',
         ], $accounts['rhjVJF4ccwbnSCU3gVvpyi6KgqUz8bLmcy']);
-
         
     }
 }
