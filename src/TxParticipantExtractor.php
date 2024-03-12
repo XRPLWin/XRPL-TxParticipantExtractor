@@ -201,6 +201,29 @@ class TxParticipantExtractor
   }
 
   /**
+   * DID
+   * @see https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/did/
+   * @return void
+   */
+  private function extract_DID(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'DID_ACCOUNT'); //Account that controls DID
+    }
+  }
+
+  /**
+   * Oracle (OracleSet, ...)
+   * @return void
+   */
+  private function extract_Oracle(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'ORACLE_OWNER');
+    }
+  }
+
+  /**
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */

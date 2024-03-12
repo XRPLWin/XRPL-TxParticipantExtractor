@@ -1,0 +1,90 @@
+{
+  "result": {
+    "Account": "rsG6ds2daE5Nk2ZMtTBd6L7YXjdapTFcmH",
+    "AssetClass": "020382A62402D2357ABC020382A62402",
+    "Fee": "20",
+    "Flags": 2147483648,
+    "LastUpdateTime": 1710229340,
+    "OracleDocumentID": 1,
+    "PriceDataSeries": [
+      {
+        "PriceData": {
+          "AssetPrice": "2e4",
+          "BaseAsset": "BTC",
+          "QuoteAsset": "ETH",
+          "Scale": 1
+        }
+      }
+    ],
+    "Provider": "0123",
+    "Sequence": 4975894,
+    "SigningPubKey": "0354557B745195AADEBD4FA10485D874FCEA30F9491BB4F3149B11F900D8359871",
+    "TransactionType": "OracleSet",
+    "TxnSignature": "3045022100D320DEA92688BC23ED44E2B5998BD75E7F1220D6DEEF4F503693A811F591413702204672865031AC6C4EE86240C743BE0B771557A18F21AF2C05171297FA21482582",
+    "ctid": "C04BED17000B0002",
+    "date": 763544541,
+    "hash": "5B133B725E4BBF488072C3555AE045D787089BFBE3A16D540495959AF9F77017",
+    "inLedger": 4975895,
+    "ledger_index": 4975895,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rsG6ds2daE5Nk2ZMtTBd6L7YXjdapTFcmH",
+              "Balance": "39999980",
+              "Flags": 0,
+              "OwnerCount": 1,
+              "Sequence": 4975895
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "0B6C072A588CF2AF7C53CE5B462D204FFBC82C1094ADF9C4B450B3E8A534D636",
+            "PreviousFields": {
+              "Balance": "40000000",
+              "OwnerCount": 0,
+              "Sequence": 4975894
+            },
+            "PreviousTxnID": "0188543B5158F838392EAE1EBD43575CC71F7F1EF2DCB809B185A3319D304CE1",
+            "PreviousTxnLgrSeq": 4975894
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "Oracle",
+            "LedgerIndex": "849165296EF18E1E6D9DDABD8B4ED974EA0B39A33FE2CDA38CF1A4C804D7CD15",
+            "NewFields": {
+              "AssetClass": "020382A62402D2357ABC020382A62402",
+              "LastUpdateTime": 1710229340,
+              "Owner": "rsG6ds2daE5Nk2ZMtTBd6L7YXjdapTFcmH",
+              "PriceDataSeries": [
+                {
+                  "PriceData": {
+                    "AssetPrice": "2e4",
+                    "BaseAsset": "BTC",
+                    "QuoteAsset": "ETH",
+                    "Scale": 1
+                  }
+                }
+              ],
+              "Provider": "0123"
+            }
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "B3BCC59A2AF97E6841DCCCE18A42B1A2B2F4C5869263E19319CA5CE4F3C8A1E1",
+            "NewFields": {
+              "Owner": "rsG6ds2daE5Nk2ZMtTBd6L7YXjdapTFcmH",
+              "RootIndex": "B3BCC59A2AF97E6841DCCCE18A42B1A2B2F4C5869263E19319CA5CE4F3C8A1E1"
+            }
+          }
+        }
+      ],
+      "TransactionIndex": 11,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
