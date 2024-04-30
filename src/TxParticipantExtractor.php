@@ -109,6 +109,9 @@ class TxParticipantExtractor
     //Extract all other participants from meta
     $this->extractAccountsFromMeta();
     $this->normalizeAccounts();
+    //Logic handlers
+    $this->logic_detectAMMWithdraw();
+
     if(isset($options['allowSpecialAccounts']) && $options['allowSpecialAccounts']) {
       //do not remove special accounts
     } else {
@@ -117,6 +120,45 @@ class TxParticipantExtractor
       
     $this->result = \array_keys($this->accounts);
     //foreach($this->result as $r) {echo "'".$r."',".PHP_EOL;}exit;
+  }
+
+  /**
+   * Logic handler for AMMWithdraw
+   * This method will detect AMM_ACCOUNT by comparing existing detected accounts.
+   * @return void
+   */
+  private function logic_detectAMMWithdraw()
+  {
+    if($this->tx->TransactionType != 'AMMWithdraw')
+      return;
+    $accounts = $this->accounts;
+    //Check if AMM_ACCOUNT role does not exist
+    foreach($this->accounts as $acc => $roles) {
+      if(\in_array('AMM_ACCOUNT',$roles))
+        return;
+    }
+    unset($acc);
+    unset($roles);
+
+    //This is AMMWithdraw but AMM_ACCOUNT was not detected
+
+    unset($accounts[self::ACCOUNT_ZERO]);
+    unset($accounts[self::ACCOUNT_ONE]);
+    unset($accounts[self::ACCOUNT_GENESIS]);
+    unset($accounts[self::ACCOUNT_BLACKHOLE]);
+    unset($accounts[self::ACCOUNT_NAN]);
+
+    //If there is two non special accounts present, one is transaction initiator other is AMM Account - see test 45
+    if(count($accounts) != 2) {
+      throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than two accounts detected without obvious AMM account');
+      //return;
+    }
+
+    foreach($this->accounts as $acc => $roles) {
+      if(!\in_array('INITIATOR',$roles)) {
+        $this->addAccount($acc, 'AMM_ACCOUNT');
+      }
+    }
   }
 
   /**
