@@ -141,17 +141,44 @@ class TxParticipantExtractor
     unset($roles);
 
     //This is AMMWithdraw but AMM_ACCOUNT was not detected
-
+    
     unset($accounts[self::ACCOUNT_ZERO]);
     unset($accounts[self::ACCOUNT_ONE]);
     unset($accounts[self::ACCOUNT_GENESIS]);
     unset($accounts[self::ACCOUNT_BLACKHOLE]);
     unset($accounts[self::ACCOUNT_NAN]);
 
-    //If there is two non special accounts present, one is transaction initiator other is AMM Account - see test 45
-    if(count($accounts) != 2) {
-      throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than two accounts detected without obvious AMM account');
+    if(count($accounts) == 1) {
+      throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - single account detected without obvious AMM account');
       //return;
+    }
+
+    //If there is two non special accounts present, one is transaction initiator other is AMM Account - see test 45
+    if(count($accounts) > 2) {
+
+      //Deep search for AMM Account in withdrawed:
+      //Eliminate all the things AMM account can ever not be:
+      //1. Eliminate INITIATOR
+      //2. Eliminate ACCOUNTROOT_REGULARKEY
+      //3. Eliminate ACCOUNTROOT_NFTOKENMINTER
+      foreach($accounts as $_a => $roles) {
+        if(\in_array('INITIATOR',$roles)) {
+          unset($accounts[$_a]);
+          continue;
+        }
+        if(\in_array('ACCOUNTROOT_REGULARKEY',$roles)) {
+          unset($accounts[$_a]);
+          continue;
+        }
+        if(\in_array('ACCOUNTROOT_NFTOKENMINTER',$roles)) {
+          unset($accounts[$_a]);
+          continue;
+        }
+      }
+      if(count($accounts) != 1) {
+        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more or less than one account detected without obvious AMM account');
+        //return;
+      }
     }
 
     foreach($this->accounts as $acc => $roles) {
