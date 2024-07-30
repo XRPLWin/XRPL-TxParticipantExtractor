@@ -161,6 +161,7 @@ class TxParticipantExtractor
       //1. Eliminate INITIATOR
       //2. Eliminate ACCOUNTROOT_REGULARKEY
       //3. Eliminate ACCOUNTROOT_NFTOKENMINTER
+      //4. Eliminate AMOUNT_ISSUER
       foreach($accounts as $_a => $roles) {
         if(\in_array('INITIATOR',$roles)) {
           unset($accounts[$_a]);
@@ -174,13 +175,25 @@ class TxParticipantExtractor
           unset($accounts[$_a]);
           continue;
         }
+        if(\in_array('AMOUNT_ISSUER',$roles)) {
+          unset($accounts[$_a]);
+          continue;
+        }
       }
-      if(count($accounts) != 1) {
+      if(count($accounts) > 1) {
+        //dd($accounts);
         throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more or less than one account detected without obvious AMM account');
         //return;
       }
-    }
 
+      if(count($accounts) == 0) {
+        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - no account detected');
+      }
+
+      //Only one remains
+      $this->addAccount(\array_keys($accounts)[0], 'AMM_ACCOUNT');
+      return;
+    }
     foreach($this->accounts as $acc => $roles) {
       if(!\in_array('INITIATOR',$roles)) {
         $this->addAccount($acc, 'AMM_ACCOUNT');
