@@ -182,7 +182,7 @@ class TxParticipantExtractor
       }
       if(count($accounts) > 1) {
         //dd($accounts);
-        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more or less than one account detected without obvious AMM account');
+        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than one account detected without obvious AMM account');
         //return;
       }
 
