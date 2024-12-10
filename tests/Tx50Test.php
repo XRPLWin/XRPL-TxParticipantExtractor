@@ -27,11 +27,10 @@ final class Tx50Test extends TestCase
         $this->assertEquals([
             'INITIATOR',
             'TXSIGNER',
-            'MPTOKENISSUER',
+            'MPTOKEN_ISSUER',
             'DIRECTORYNODE_OWNER',
             'ACCOUNTROOT_ACCOUNT',
             
-
         ], $accounts['rsHwwSufxZP4TFCd4PmaiCbpA996JVRp1q']);
 
     }

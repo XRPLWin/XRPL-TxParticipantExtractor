@@ -722,12 +722,15 @@ class TxParticipantExtractor
   private function extract_MPTokenIssuance(\stdClass $data, ?string $context = null)
   {
     if(isset($data->Issuer)) {
-      $this->addAccount($data->Issuer, 'MPTOKENISSUER');
+      $this->addAccount($data->Issuer, 'MPTOKEN_ISSUER');
     }
   }
 
   private function extract_MPToken(\stdClass $data, ?string $context = null)
   {
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'MPTOKEN_ACCOUNT');
+    }
     //no affected accounts (?)
   }
 

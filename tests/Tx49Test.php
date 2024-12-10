@@ -27,7 +27,7 @@ final class Tx49Test extends TestCase
         $this->assertEquals([
             'INITIATOR',
             'TXSIGNER',
-            'MPTOKENISSUER',
+            'MPTOKEN_ISSUER',
             'ACCOUNTROOT_ACCOUNT',
             
         ], $accounts['rsHwwSufxZP4TFCd4PmaiCbpA996JVRp1q']);
@@ -35,6 +35,7 @@ final class Tx49Test extends TestCase
         //Destination
         $this->assertEquals([
             'DESTINATION',
+            'MPTOKEN_ACCOUNT',
             
         ], $accounts['rBhx2s21vR9ch4xRfZYzHkLU4ZfnbmNxSH']);
 
