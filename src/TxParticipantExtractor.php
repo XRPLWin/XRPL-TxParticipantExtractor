@@ -716,6 +716,21 @@ class TxParticipantExtractor
 
   # HOOKS END
 
+  /**
+   * XLS-33 Multi Purpose Tokens
+   */
+  private function extract_MPTokenIssuance(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Issuer)) {
+      $this->addAccount($data->Issuer, 'MPTOKENISSUER');
+    }
+  }
+
+  private function extract_MPToken(\stdClass $data, ?string $context = null)
+  {
+    //no affected accounts (?)
+  }
+
   private function pubkeyToAccount(string $SigningPubKey): string
   {
     return XRPLPHPUtilities::deriveAddress($SigningPubKey);

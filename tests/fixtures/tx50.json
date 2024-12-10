@@ -1,0 +1,71 @@
+{
+  "result": {
+    "Account": "rsHwwSufxZP4TFCd4PmaiCbpA996JVRp1q",
+    "AssetScale": 2,
+    "Fee": "10000",
+    "Flags": 2147483648,
+    "MPTokenMetadata": "464F4F",
+    "MaximumAmount": "10000",
+    "Sequence": 6558004,
+    "SigningPubKey": "022C0CC35CFF251E7DE5A3EFE8114FBC231E4B5F467736D9C42C3A17430622D234",
+    "TransactionType": "MPTokenIssuanceCreate",
+    "TxnSignature": "30450221009D33C902BF4C2E06F9A3CC367C271EC44FE3AEF41C38E2478AF89841DFB5A12F02203F73B0D170CA804476449B561A63D1E66DCF5891B1EE9B96DB5D33BB935BD473",
+    "ctid": "C064113500090002",
+    "date": 787140761,
+    "hash": "89A54081A65A345D5862093E15D71087F66BC04E45D531E7E6C907C13FDB890F",
+    "inLedger": 6558005,
+    "ledger_index": 6558005,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "MPTokenIssuance",
+            "LedgerIndex": "2114D1B499EF40CF94CF3705FA12BD1E609A45BA0AA786A1587D6FAD7F547010",
+            "NewFields": {
+              "AssetScale": 2,
+              "Issuer": "rsHwwSufxZP4TFCd4PmaiCbpA996JVRp1q",
+              "MPTokenMetadata": "464F4F",
+              "MaximumAmount": "10000",
+              "Sequence": 6558004
+            }
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "8A9D772DA89D7EFAB9778D008D97B5546CFCFD793E901BC0D74EA2E8DC2A15E3",
+            "NewFields": {
+              "Owner": "rsHwwSufxZP4TFCd4PmaiCbpA996JVRp1q",
+              "RootIndex": "8A9D772DA89D7EFAB9778D008D97B5546CFCFD793E901BC0D74EA2E8DC2A15E3"
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rsHwwSufxZP4TFCd4PmaiCbpA996JVRp1q",
+              "Balance": "39990000",
+              "Flags": 0,
+              "OwnerCount": 1,
+              "Sequence": 6558005
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "F04B74742C4BB73537B555A033B2A91F1D7B6E9ED7468CDD7155C5D7E5323DA1",
+            "PreviousFields": {
+              "Balance": "40000000",
+              "OwnerCount": 0,
+              "Sequence": 6558004
+            },
+            "PreviousTxnID": "9478A0290F7D4DD12B33270D40CF0B06DA02E5FF0355210FA9CE480BE5680A9A",
+            "PreviousTxnLgrSeq": 6558004
+          }
+        }
+      ],
+      "TransactionIndex": 9,
+      "TransactionResult": "tesSUCCESS",
+      "mpt_issuance_id": "0064113418FE8E44B45A0DFC97AFB743A021A5F8A6C4DD70"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
