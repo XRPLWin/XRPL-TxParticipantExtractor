@@ -153,7 +153,7 @@ class TxParticipantExtractor
       //return;
     }
 
-    //If there is two non special accounts present, one is transaction initiator other is AMM Account - see test 45
+    //If there is more than two non special accounts present, one is transaction initiator other is AMM Account - see test 45
     if(count($accounts) > 2) {
 
       //Deep search for AMM Account in withdrawed:
@@ -182,23 +182,28 @@ class TxParticipantExtractor
       }
       //Case when there is only token issuer and amm account left, in that case RIPPLESTATE_HIGHLIMIT_ISSUER is AMM account
       //@see EAE26C7364232AC1D7C3B03EC4ABD0258B0C392A3F2FF5B7394F3826DA1D5A1A
-      if(count($accounts) == 2) {
-        $isValidSpecificCase = true;
-        foreach($accounts as $_a => $roles) {
-          if(count($roles) != 2){
-            $isValidSpecificCase = false;
-            break;
+      
+      if(count($accounts) == 2 || count($accounts) == 3) {
+        
+        if(count($accounts) == 2) {
+          $isValidSpecificCase = true;
+          foreach($accounts as $_a => $roles) {
+            if(count($roles) != 2){
+              $isValidSpecificCase = false;
+              break;
+            }
+            
+            //Roles has to contain (DIRECTORYNODE_OWNER and RIPPLESTATE_HIGHLIMIT_ISSUER) OR (DIRECTORYNODE_OWNER and RIPPLESTATE_LOWLIMIT_ISSUER)
+            if(\in_array('DIRECTORYNODE_OWNER',$roles) && \in_array('RIPPLESTATE_HIGHLIMIT_ISSUER',$roles)) {
+              //OK
+            } elseif(\in_array('DIRECTORYNODE_OWNER',$roles) && \in_array('RIPPLESTATE_LOWLIMIT_ISSUER',$roles)) {
+              //OK
+            } else {
+              $isValidSpecificCase = false;
+            }
           }
-          //Roles has to contain (DIRECTORYNODE_OWNER and RIPPLESTATE_HIGHLIMIT_ISSUER) OR (DIRECTORYNODE_OWNER and RIPPLESTATE_LOWLIMIT_ISSUER)
-          if(\in_array('DIRECTORYNODE_OWNER',$roles) && \in_array('RIPPLESTATE_HIGHLIMIT_ISSUER',$roles)) {
-            //OK
-          } elseif(\in_array('DIRECTORYNODE_OWNER',$roles) && \in_array('RIPPLESTATE_LOWLIMIT_ISSUER',$roles)) {
-            //OK
-          } else {
-            $isValidSpecificCase = false;
-          }
-        }
-        if($isValidSpecificCase) {
+
+          if($isValidSpecificCase) {
           //Remove account with RIPPLESTATE_LOWLIMIT_ISSUER
           foreach($accounts as $_a => $roles) {
             if(\in_array('RIPPLESTATE_LOWLIMIT_ISSUER',$roles)) {
@@ -206,11 +211,37 @@ class TxParticipantExtractor
               break;
             }
           }
+          
         }
+
+
+        } else { //3
+          
+          $isValidSpecificCase = false;
+          foreach($accounts as $_a => $roles) {
+            
+            //Roles has to contain (DIRECTORYNODE_OWNER and RIPPLESTATE_LOWLIMIT_ISSUER)
+            if(\in_array('DIRECTORYNODE_OWNER',$roles) && \in_array('RIPPLESTATE_LOWLIMIT_ISSUER',$roles)) {
+              $isValidSpecificCase = true;
+            } else {
+              //$isValidSpecificCase = false;
+            }
+          }
+
+          if($isValidSpecificCase) {
+            //Remove account without DIRECTORYNODE_OWNER
+            
+            foreach($accounts as $_a => $roles) {
+              if(!\in_array('DIRECTORYNODE_OWNER',$roles)) {
+                unset($accounts[$_a]);
+              }
+            }
+          }
+        }
+       
       }
 
       if(count($accounts) > 1) {
-        //dd($accounts);
         throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than one account detected without obvious AMM account');
         //return;
       }
