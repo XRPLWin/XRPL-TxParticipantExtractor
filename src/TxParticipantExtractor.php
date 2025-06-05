@@ -149,7 +149,7 @@ class TxParticipantExtractor
     unset($accounts[self::ACCOUNT_NAN]);
 
     if(count($accounts) == 1) {
-      throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - single account detected without obvious AMM account');
+      throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - single account detected without obvious AMM account (txn: '.$this->tx->hash.')');
       //return;
     }
 
@@ -242,12 +242,12 @@ class TxParticipantExtractor
       }
 
       if(count($accounts) > 1) {
-        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than one account detected without obvious AMM account');
+        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than one account detected without obvious AMM account (txn: '.$this->tx->hash.')');
         //return;
       }
 
       if(count($accounts) == 0) {
-        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - no account detected');
+        throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - no account detected (txn: '.$this->tx->hash.')');
       }
 
       //Only one remains
