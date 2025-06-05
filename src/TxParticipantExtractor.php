@@ -184,11 +184,12 @@ class TxParticipantExtractor
       //@see EAE26C7364232AC1D7C3B03EC4ABD0258B0C392A3F2FF5B7394F3826DA1D5A1A
       
       if(count($accounts) == 2 || count($accounts) == 3) {
-        
+       
         if(count($accounts) == 2) {
+          
           $isValidSpecificCase = true;
           foreach($accounts as $_a => $roles) {
-            if(count($roles) != 2){
+            if(count($roles) != 2) {
               $isValidSpecificCase = false;
               break;
             }
@@ -216,7 +217,6 @@ class TxParticipantExtractor
 
 
         } else { //3
-          
           $isValidSpecificCase = false;
           foreach($accounts as $_a => $roles) {
             
@@ -241,6 +241,17 @@ class TxParticipantExtractor
        
       }
 
+      if(count($accounts) == 2) {
+        //Handle case when LPToken issuer and non LPToken issuer are left (see AA32D2BFA786383BE8AA96CB9ACA59C4E3DEE2410879E6B52B8928DF1CE544B9)
+        
+        //Remove account with RIPPLESTATE_HIGHLIMIT_ISSUER
+          foreach($accounts as $_a => $roles) {
+            if(\in_array('RIPPLESTATE_HIGHLIMIT_ISSUER',$roles)) {
+              unset($accounts[$_a]);
+              break;
+            }
+          }
+      }
       if(count($accounts) > 1) {
         throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than one account detected without obvious AMM account (txn: '.$this->tx->hash.')');
         //return;
