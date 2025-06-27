@@ -2,8 +2,8 @@
 
 namespace XRPLWin\XRPLTxParticipantExtractor;
 
-use XRPL_PHP\Core\RippleBinaryCodec\Types\AccountId;
-use XRPL_PHP\Core\CoreUtilities as XRPLPHPUtilities;
+use Hardcastle\XRPL_PHP\Core\RippleBinaryCodec\Types\AccountId;
+use Hardcastle\XRPL_PHP\Core\CoreUtilities as XRPLPHPUtilities;
 
 /**
  * Transaction Participant Extractor
