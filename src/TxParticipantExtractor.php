@@ -104,6 +104,17 @@ class TxParticipantExtractor
       unset($s);
     }
 
+    //Batch
+    if($this->tx->TransactionType == 'Batch') {
+      //Add BatchSigners
+      if(isset($this->tx->BatchSigners) && \is_array($this->tx->BatchSigners)) {
+        foreach($this->tx->BatchSigners as $bs) {
+          if(isset($bs->BatchSigner->Account))
+            $this->addAccount($bs->BatchSigner->Account, 'BATCHSIGNERS_BATCHSIGNER_ACCOUNT');
+        }
+      }
+    }
+
     //TODO AuthAccounts,BidMax,Amount,Amount2,Asset,Asset2 https://xrpl.org/ammbid.html
   
     //Extract all other participants from meta
