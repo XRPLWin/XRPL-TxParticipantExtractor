@@ -322,13 +322,21 @@ class TxParticipantExtractor
   }
 
   /**
-   * @param \stdClass $data - metadata changed fields
+   * @param array|\stdClass $data - metadata changed fields or empty array
    * @param string $LedgerEntryType
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
-  private function extract(\stdClass $data, string $LedgerEntryType, ?string $context = null): void
+  private function extract(array|\stdClass $data, string $LedgerEntryType, ?string $context = null): void
   {
+    if(\is_array($data)) {
+      if(count($data) == 0) {
+        $data = (object)$data; //[]
+      } else {
+        throw new \Exception('data is non-empty array which is unsupported, object expected');
+      }
+    }
+
     $subMethod = 'extract_'.$LedgerEntryType;
     $this->$subMethod($data,$context);
   }
