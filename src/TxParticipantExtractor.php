@@ -539,6 +539,36 @@ class TxParticipantExtractor
    * @see https://xrpl.org/ledger-object-types.html
    * @return void
    */
+  private function extract_Firewall(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->CounterParty)) {
+      $this->addAccount($data->CounterParty, 'FIREWALL_COUNTERPARTY');
+    }
+
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'FIREWALL_OWNER');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * Related to firewall.
+   * @return void
+   */
+  private function extract_WithdrawPreauth(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'WITHDRAWPREAUTH_ACCOUNT');
+    }
+    if(isset($data->Authorize)) {
+      $this->addAccount($data->Authorize, 'WITHDRAWPREAUTH_AUTHORIZE');
+    }
+  }
+
+  /**
+   * @see https://xrpl.org/ledger-object-types.html
+   * @return void
+   */
   private function extract_LedgerHashes(\stdClass $data, ?string $context = null)
   {
     //no affected accounts

@@ -1,0 +1,81 @@
+{
+  "id": "firewalltest",
+  "result": {
+    "Account": "rfeZgd8GgQyZ5Pdh5XsLddEo7EjQiQPZD3",
+    "Backup": "rEULJ6VeKU85xCS3Nk2VjbZzfB3YgYspur",
+    "CounterParty": "rf5cfYRf2EKVgTa4i3wp6JBzC1jsiBZdJe",
+    "Fee": "10",
+    "Flags": 0,
+    "LastLedgerSequence": 1484,
+    "NetworkID": 21465,
+    "NextOTPHash": "A025802057792FA51991C9183DA77B0D9526C3ADC82503A7C94E62FB1CEC4BDB9738027F810106",
+    "Sequence": 1464,
+    "SigningPubKey": "ED8E79DEEE707B95EBE091C43F63FD7A50F2B01F8BC4BE416AB77A7F5C27764987",
+    "TransactionType": "FirewallSet",
+    "TxnSignature": "867939A51D5DD7E80CA5C9E0D2856A89264131CA4F359DDF63389968325A9FD34108DF97E8681386BBE18B9BF965556B412A8B6CDF030B9413798326EAC33300",
+    "ctid": "C00005BA000153D9",
+    "date": 808605882,
+    "hash": "474CE61C011BA107CD362576A4BDA462F381D6170A2D2E472951AE90915641DE",
+    "inLedger": 1466,
+    "ledger_index": 1466,
+    "meta": {
+        "AffectedNodes": [
+            {
+                "ModifiedNode": {
+                    "FinalFields": {
+                        "Account": "rfeZgd8GgQyZ5Pdh5XsLddEo7EjQiQPZD3",
+                        "Balance": "999999990",
+                        "Flags": 0,
+                        "OwnerCount": 2,
+                        "Sequence": 1465
+                    },
+                    "LedgerEntryType": "AccountRoot",
+                    "LedgerIndex": "1D9A3964BA80C26B99420E4521E00D82F955038EB19D44BB276C2C1ED59DCDFC",
+                    "PreviousFields": {
+                        "Balance": "1000000000",
+                        "OwnerCount": 0,
+                        "Sequence": 1464
+                    },
+                    "PreviousTxnID": "B55EB34A856D4BC09FFD96F9056263BB2089D8FBCDC40540BF9DADD2C4D061F1",
+                    "PreviousTxnLgrSeq": 1464
+                }
+            },
+            {
+                "CreatedNode": {
+                    "LedgerEntryType": "DirectoryNode",
+                    "LedgerIndex": "5B82D1CC1E6CFAF8A9108067CC0C9400F3B389C24B17B630705BB52EC0FB105F",
+                    "NewFields": {
+                        "Owner": "rfeZgd8GgQyZ5Pdh5XsLddEo7EjQiQPZD3",
+                        "RootIndex": "5B82D1CC1E6CFAF8A9108067CC0C9400F3B389C24B17B630705BB52EC0FB105F"
+                    }
+                }
+            },
+            {
+                "CreatedNode": {
+                    "LedgerEntryType": "Firewall",
+                    "LedgerIndex": "64CDCE4C6596C28ECE21C2E1E0693BB7D1BFAB7B50A02618E5856EC4AA3D6872",
+                    "NewFields": {
+                        "CounterParty": "rf5cfYRf2EKVgTa4i3wp6JBzC1jsiBZdJe",
+                        "NextOTPHash": "A025802057792FA51991C9183DA77B0D9526C3ADC82503A7C94E62FB1CEC4BDB9738027F810106",
+                        "Owner": "rfeZgd8GgQyZ5Pdh5XsLddEo7EjQiQPZD3"
+                    }
+                }
+            },
+            {
+                "CreatedNode": {
+                    "LedgerEntryType": "WithdrawPreauth",
+                    "LedgerIndex": "A8C6EB28E364628423CEE4579220DCB8613DB5C23DFA561FC64086EE5A362FFD",
+                    "NewFields": {
+                        "Account": "rfeZgd8GgQyZ5Pdh5XsLddEo7EjQiQPZD3",
+                        "Authorize": "rEULJ6VeKU85xCS3Nk2VjbZzfB3YgYspur"
+                    }
+                }
+            }
+        ],
+        "TransactionIndex": 1,
+        "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true
+
+  }
+}
