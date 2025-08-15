@@ -10,7 +10,7 @@ use XRPLWin\XRPLTxParticipantExtractor\TxParticipantExtractor;
  */
 final class Tx54Test extends TestCase
 {
-    public function testBatch()
+    public function testFirewall()
     {
         $transaction = file_get_contents(__DIR__.'/fixtures/tx54.json');
         $transaction = \json_decode($transaction);
