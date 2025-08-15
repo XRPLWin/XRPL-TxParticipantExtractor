@@ -32,6 +32,14 @@ class TxParticipantExtractor
     if(isset($this->tx->Account) && $this->tx->Account)
       $this->addAccount($this->tx->Account, 'INITIATOR');
 
+    //Add Backup (if exists) (Firewall)
+    if(isset($this->tx->Backup))
+      $this->addAccount($this->tx->Backup, 'BACKUP');
+
+    //Add CounterParty (if exists) (Firewall)
+    if(isset($this->tx->CounterParty))
+      $this->addAccount($this->tx->CounterParty, 'COUNTERPARTY');
+    
     //Add Issuer (if exists)
     if(isset($this->tx->Issuer))
       $this->addAccount($this->tx->Issuer, 'ISSUER');
