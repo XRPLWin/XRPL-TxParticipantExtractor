@@ -815,6 +815,17 @@ class TxParticipantExtractor
 
   # HOOKS END
 
+  
+  private function extract_Credential(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Issuer)) {
+      $this->addAccount($data->Issuer, 'CREDENTIAL_ISSUER');
+    }
+    if(isset($data->Subject)) {
+      $this->addAccount($data->Issuer, 'CREDENTIAL_SUBJECT');
+    }
+  }
+
   /**
    * XLS-33 Multi Purpose Tokens
    */
