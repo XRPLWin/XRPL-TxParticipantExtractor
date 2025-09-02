@@ -44,6 +44,10 @@ class TxParticipantExtractor
     if(isset($this->tx->Issuer))
       $this->addAccount($this->tx->Issuer, 'ISSUER');
 
+    //Add Subject (if exists) - see CredentialCreate
+    if(isset($this->tx->Subject))
+      $this->addAccount($this->tx->Subject, 'SUBJECT');
+
     //Add Destination (if exists)
     if(isset($this->tx->Destination))
       $this->addAccount($this->tx->Destination, 'DESTINATION');
@@ -823,6 +827,17 @@ class TxParticipantExtractor
     }
     if(isset($data->Subject)) {
       $this->addAccount($data->Issuer, 'CREDENTIAL_SUBJECT');
+    }
+  }
+
+  private function extract_PermissionedDomain(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->AcceptedCredentials)) {
+      foreach($data->AcceptedCredentials as $v) {
+        if(isset($v->Credential->Issuer)) {
+          $this->addAccount($v->Credential->Issuer, 'CREDENTIAL_ISSUER');
+        }
+      }
     }
   }
 

@@ -1,0 +1,85 @@
+{
+  "result": {
+    "AcceptedCredentials": [
+      {
+        "Credential": {
+          "CredentialType": "6D795F63726564656E7469616C",
+          "Issuer": "r9GrSn8m1KyW6VYFrY8mnJSahWp92eztzq"
+        }
+      }
+    ],
+    "Account": "r43sjcv7u6A4pqVdPY2rqcy4G54gedVbUf",
+    "Fee": "1",
+    "Flags": 0,
+    "LastLedgerSequence": 5259939,
+    "Sequence": 5216773,
+    "SigningPubKey": "ED853B91CEF66AB2731590B2B054DC0677D31AF6D9AD096D583593FDE4566607A6",
+    "TransactionType": "PermissionedDomainSet",
+    "TxnSignature": "AE3B38F159BBA78E2035FF8DD74633028E26592D0F6BBE3A3408F0A5510882FE5A9DBD04777D7F2DDD5B30B7EDD695E4B5FF73B5A7EC3AE47B44F9478166DB0C",
+    "ctid": "C050429100060002",
+    "date": 808314932,
+    "hash": "C8C362DB3E1C12CC1A5C9B3CEF1D273B9546DFCE85C8882C489679CEB9B3F8B2",
+    "inLedger": 5259921,
+    "ledger_index": 5259921,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "r43sjcv7u6A4pqVdPY2rqcy4G54gedVbUf",
+              "Balance": "241999986",
+              "Domain": "68747470733A2F2F787370656E63652E636F2E756B",
+              "Flags": 16777216,
+              "OwnerCount": 3,
+              "Sequence": 5216774
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "1CC91650EE8DD9B2CDD13596F309E5D972A255C1A203CC8D684028AB69A336A8",
+            "PreviousFields": {
+              "Balance": "241999987",
+              "OwnerCount": 2,
+              "Sequence": 5216773
+            },
+            "PreviousTxnID": "2EBF9505D3C2136B87205BFF9D556E58A7D334EC51B836165CBA60C7F419FAD1",
+            "PreviousTxnLgrSeq": 5259867
+          }
+        },
+        {
+          "CreatedNode": {
+            "LedgerEntryType": "PermissionedDomain",
+            "LedgerIndex": "2A9F5D1485282B0D533035CBA3ACFEAC996C6531430454DEFDEDF3BA0DC949DF",
+            "NewFields": {
+              "AcceptedCredentials": [
+                {
+                  "Credential": {
+                    "CredentialType": "6D795F63726564656E7469616C",
+                    "Issuer": "r9GrSn8m1KyW6VYFrY8mnJSahWp92eztzq"
+                  }
+                }
+              ],
+              "Owner": "r43sjcv7u6A4pqVdPY2rqcy4G54gedVbUf",
+              "Sequence": 5216773
+            }
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "Owner": "r43sjcv7u6A4pqVdPY2rqcy4G54gedVbUf",
+              "RootIndex": "DF28F021199E21FAF69F4EB70D68DE81D1167CD50D2231BB588304420D4644FE"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "DF28F021199E21FAF69F4EB70D68DE81D1167CD50D2231BB588304420D4644FE",
+            "PreviousTxnID": "CDB4F88BD81758867DC300B5ED24E73DE1B709DA922A862EAF421698B7AF1375",
+            "PreviousTxnLgrSeq": 5243021
+          }
+        }
+      ],
+      "TransactionIndex": 6,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
