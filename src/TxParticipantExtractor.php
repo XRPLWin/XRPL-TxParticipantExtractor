@@ -841,6 +841,11 @@ class TxParticipantExtractor
     }
   }
 
+  private function extract_Delegate(\stdClass $data, ?string $context = null)
+  {
+    //
+  }
+
   /**
    * XLS-33 Multi Purpose Tokens
    */
