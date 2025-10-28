@@ -205,7 +205,7 @@ class TxParticipantExtractor
       }
       //Case when there is only token issuer and amm account left, in that case RIPPLESTATE_HIGHLIMIT_ISSUER is AMM account
       //@see EAE26C7364232AC1D7C3B03EC4ABD0258B0C392A3F2FF5B7394F3826DA1D5A1A
-      
+     
       if(count($accounts) == 2 || count($accounts) == 3) {
        
         if(count($accounts) == 2) {
@@ -267,13 +267,15 @@ class TxParticipantExtractor
       if(count($accounts) == 2) {
         //Handle case when LPToken issuer and non LPToken issuer are left (see AA32D2BFA786383BE8AA96CB9ACA59C4E3DEE2410879E6B52B8928DF1CE544B9)
         
+        $accounts = array_reverse($accounts); //first discovered is usually LPToken issuer
+        
         //Remove account with RIPPLESTATE_HIGHLIMIT_ISSUER
-          foreach($accounts as $_a => $roles) {
-            if(\in_array('RIPPLESTATE_HIGHLIMIT_ISSUER',$roles)) {
-              unset($accounts[$_a]);
-              break;
-            }
+        foreach($accounts as $_a => $roles) {
+          if(\in_array('RIPPLESTATE_HIGHLIMIT_ISSUER',$roles)) {
+            unset($accounts[$_a]);
+            break;
           }
+        }
       }
       if(count($accounts) > 1) {
         throw new \Exception('Unhandled: unable to detect AMM_ACCOUNT in logic_detectAMMWithdraw - more than one account detected without obvious AMM account (txn: '.$this->tx->hash.')');
