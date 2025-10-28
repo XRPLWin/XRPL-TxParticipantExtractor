@@ -248,6 +248,8 @@ class TxParticipantExtractor
       if(count($accounts) == 2) {
         //Handle case when LPToken issuer and non LPToken issuer are left (see AA32D2BFA786383BE8AA96CB9ACA59C4E3DEE2410879E6B52B8928DF1CE544B9)
         
+        $accounts = array_reverse($accounts); //first discovered is usually LPToken issuer
+        
         //Remove account with RIPPLESTATE_HIGHLIMIT_ISSUER
           foreach($accounts as $_a => $roles) {
             if(\in_array('RIPPLESTATE_HIGHLIMIT_ISSUER',$roles)) {
