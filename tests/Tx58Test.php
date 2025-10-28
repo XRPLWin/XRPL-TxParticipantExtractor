@@ -12,7 +12,7 @@ use XRPLWin\XRPLTxParticipantExtractor\TxParticipantExtractor;
  */
 final class Tx58Test extends TestCase
 {
-    public function testAMMWithdrawTodo()
+    public function testAMMWithdrawMultiAMM()
     {
         $transaction = file_get_contents(__DIR__.'/fixtures/tx58.json');
         $transaction = \json_decode($transaction);
