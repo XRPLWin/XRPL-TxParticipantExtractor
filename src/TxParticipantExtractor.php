@@ -850,7 +850,9 @@ class TxParticipantExtractor
 
   private function extract_Cron(\stdClass $data, ?string $context = null)
   {
-    //
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'CRON_OWNER');
+    }
   }
 
   /**
