@@ -848,6 +848,11 @@ class TxParticipantExtractor
     //
   }
 
+  private function extract_Cron(\stdClass $data, ?string $context = null)
+  {
+    //
+  }
+
   /**
    * XLS-33 Multi Purpose Tokens
    */
