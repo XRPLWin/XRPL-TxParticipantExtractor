@@ -22,7 +22,7 @@ final class Tx61Test extends TestCase
         $this->assertIsArray($parsedTransaction);
         
         $accounts = $TxParticipantExtractor->accounts();
-        dump($accounts);
+        
         $this->assertCount(4, $accounts);
         
         //Initiator
