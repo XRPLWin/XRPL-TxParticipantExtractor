@@ -873,6 +873,31 @@ class TxParticipantExtractor
     //no affected accounts (?)
   }
 
+  private function extract_Vault(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'VAULT_ACCOUNT');
+    }
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'VAULT_OWNER');
+    }
+
+    //Asset (if token)
+    if(isset($data->Asset) && !\is_string($data->Asset) && isset($data->Asset->issuer)) {
+      $this->addAccount($data->Asset->issuer, 'VAULT_ASSET_ISSUER');
+    }
+  }
+  
+  private function extract_LoanBroker(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Account)) {
+      $this->addAccount($data->Account, 'LOANBROKER_ACCOUNT');
+    }
+    if(isset($data->Owner)) {
+      $this->addAccount($data->Owner, 'LOANBROKER_OWNER');
+    }
+  }
+
   private function pubkeyToAccount(string $SigningPubKey): string
   {
     return XRPLPHPUtilities::deriveAddress($SigningPubKey);
