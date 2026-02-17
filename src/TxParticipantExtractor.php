@@ -840,6 +840,22 @@ class TxParticipantExtractor
     }
   }
 
+  /**
+   * @see https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066-lending-protocol
+   */
+  private function extract_Loan(\stdClass $data, ?string $context = null)
+  {
+    if(isset($data->Depositor)) {
+      $this->addAccount($data->Depositor, 'LOAN_DEPOSITOR');
+    }
+    if(isset($data->Borrower)) {
+      $this->addAccount($data->Borrower, 'LOAN_BORROWER');
+    }
+    if(isset($data->LoanBroker)) {
+      $this->addAccount($data->LoanBroker, 'LOAN_LOANBROKER');
+    }
+  }
+
   private function pubkeyToAccount(string $SigningPubKey): string
   {
     return XRPLPHPUtilities::deriveAddress($SigningPubKey);
